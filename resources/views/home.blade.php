@@ -5,285 +5,53 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>GPS-Cameroon</title>
-        <link rel="stylesheet" href="{{ url('/css/all.css') }}">
-        <link rel="stylesheet" href="{{ url('/css/bootstrap.css') }}">
-        <link rel="stylesheet" href="{{ url('/css/bootstrap.min.css') }}">
-        <link rel="stylesheet" href="{{ url('/css/custom.css') }}">
-        <link rel="stylesheet" href="{{ url('/css/navbar.css') }}">
-        <link rel="stylesheet" href="{{ url('/css/sidebar.css') }}">
+        @include('layouts.components.header-links-home')
         <link rel="stylesheet" href="{{ url('/css/map.css') }}">
     </head>    
 
     <body>
-    <nav class="navbar navbar-expand-lg navbar-mainbg bg-primary nav-style fixed-top">
-        <a class="navbar-brand navbar-logo" href="#"><h6> Cameroon GPS</h6></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <i class="fas fa-bars text-white"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto">
-                <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
-                <li class="nav-item active">
-                    <a class="nav-link" href="javascript:void(0);"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="javascript:void(0);"><i class="far fa-address-book"></i>Features</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="javascript:void(0);"><i class="far fa-clone"></i>Pricing</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="javascript:void(0);"><i class="far fa-calendar-alt"></i>Settings</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="javascript:void(0);"><i class="far fa-chart-bar"></i>Charts</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="javascript:void(0);"><i class="far fa-copy"></i>Documents</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    
+    @include('layouts.components.navbar')
 
             <!--PRO SIDEBAR PART-->
-<div class="page-wrapper chiller-theme toggled">
-  <a id="show-sidebar" class="btn btn-sm btn-primary" href="#">
-    <i class="fas fa-bars"></i>
-  </a>
-  <nav id="sidebar" class="sidebar-wrapper">
-    <div class="sidebar-content">
-      <div class="sidebar-brand">
-        <a href="#">pro sidebar</a>
-      </div>
-      <div class="sidebar-header">
-      <br/>
-        <div id="close-sidebar" style="float:right">
-          <i class="fas fa-times"></i>
-        </div>
-        <div class="user-pic">
-          <img class="img-responsive img-rounded" src="{{ url('img/user.jpg')}}"
-            alt="User picture">
-        </div>
-        <div class="user-info">
-          <span class="user-name">
-            <strong>{{ ucfirst(Auth()->user()->name) }}</strong>
-          </span>
-          <span class="user-role">Owner of vehicle (0)</span>
-          <span class="user-status">
-            <i class="fa fa-circle"></i>
-            <span>Online</span>
-          </span>
-        </div>
-      </div>
-      <!-- sidebar-header  -->
-      <div class="sidebar-search">
-        <div>
-                <button class="btn btn-info"><i class="fa fa-plus" style="font-size:8px"></i><i class="fas fa-car-side"></i> Add a new vehicle?</button>
-
-        </div>
-      </div>
-      <!-- sidebar-search  -->
-      <div class="sidebar-menu">
-        <ul>
-          <li class="header-menu">
-            <span>General</span>
-          </li>
-          <li class="sidebar-dropdown">
-            <a href="#">
-              <i class="fa fa-tachometer-alt"></i>
-              <span>Dashboard</span>
-              <span class="badge badge-pill badge-warning">New</span>
-            </a>
-            <div class="sidebar-submenu">
-              <ul>
-                <li>
-                  <a href="#">Dashboard 1
-                    <span class="badge badge-pill badge-success">Pro</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">Dashboard 2</a>
-                </li>
-                <li>
-                  <a href="#">Dashboard 3</a>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <li class="sidebar-dropdown">
-            <a href="#">
-              <i class="fa fa-shopping-cart"></i>
-              <span>E-commerce</span>
-              <span class="badge badge-pill badge-danger">3</span>
-            </a>
-            <div class="sidebar-submenu">
-              <ul>
-                <li>
-                  <a href="#">Products
-
-                  </a>
-                </li>
-                <li>
-                  <a href="#">Orders</a>
-                </li>
-                <li>
-                  <a href="#">Credit cart</a>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <li class="sidebar-dropdown">
-            <a href="#">
-              <i class="far fa-gem"></i>
-              <span>Components</span>
-            </a>
-            <div class="sidebar-submenu">
-              <ul>
-                <li>
-                  <a href="#">General</a>
-                </li>
-                <li>
-                  <a href="#">Panels</a>
-                </li>
-                <li>
-                  <a href="#">Tables</a>
-                </li>
-                <li>
-                  <a href="#">Icons</a>
-                </li>
-                <li>
-                  <a href="#">Forms</a>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <li class="sidebar-dropdown">
-            <a href="#">
-              <i class="fa fa-chart-line"></i>
-              <span>Charts</span>
-            </a>
-            <div class="sidebar-submenu">
-              <ul>
-                <li>
-                  <a href="#">Pie chart</a>
-                </li>
-                <li>
-                  <a href="#">Line chart</a>
-                </li>
-                <li>
-                  <a href="#">Bar chart</a>
-                </li>
-                <li>
-                  <a href="#">Histogram</a>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <li class="sidebar-dropdown">
-            <a href="#">
-              <i class="fa fa-globe"></i>
-              <span>Maps</span>
-            </a>
-            <div class="sidebar-submenu">
-              <ul>
-                <li>
-                  <a href="#">Google maps</a>
-                </li>
-                <li>
-                  <a href="#">Open street map</a>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <li class="header-menu">
-            <span>Extra</span>
-          </li>
-          <li>
-            <a href="#">
-              <i class="fa fa-book"></i>
-              <span>Documentation</span>
-              <span class="badge badge-pill badge-primary">Beta</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="fa fa-calendar"></i>
-              <span>Calendar</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="fa fa-folder"></i>
-              <span>Examples</span>
-            </a>
-          </li>
-        </ul>
-      </div>
-      <!-- sidebar-menu  -->
-    </div>
-    <!-- sidebar-content  -->
-    <div class="sidebar-footer">
-      <a href="#">
-        <i class="fa fa-bell white"></i>
-        <span class="badge badge-pill badge-warning notification">3</span>
-      </a>
-      <a href="#">
-        <i class="fa fa-envelope white"></i>
-        <span class="badge badge-pill badge-success notification">7</span>
-      </a>
-      <a href="#">
-        <i class="fa fa-cog white"></i>
-        <span class="badge-sonar"></span>
-      </a>
-      <a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-        <i class="fa fa-power-off white"></i>
-      </a>
-      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-      </form>
-    </div>
-  </nav>
+    @include('layouts.components.sidebar')
   <main class="page-content">
-  <div id="map"></div>
-            <div class="">
-                <nav class="menu">
-                        <input class="menu-toggler" type="checkbox">
-                        <label for="menu-toggler"></label>  
-                <ul>
-                    <li class="menu-item">
-                    <a class="fa fa-map-marker geolo" href="#"></a>
-                    </li>
-                    <li class="menu-item lock">
-                    <a class="fas fa-lock lock" href="#"></a>
-                    </li>
-                    <li class="menu-item">
-                    <a class="fa fa-power-off stop" href="#"></a>
-                    </li>
-                    <li class="menu-item">
-                    <a class="fas fa-crosshairs check" onclick="geolocalize()" href="#"></a>
-                    </li>
-                    <li class="menu-item">
-                    <a class ="fa fa-podcast restrict" href="#"></a>
-                    </li>
-                    <li class="menu-item">
-                    <a class="fas fa-draw-polygon plan" href="#"></a>
-                    </li>
-                </ul>
-                </nav>
-            </div>
-  </main>
-  <!-- page-content" -->
-</div>
-<!-- page-wrapper -->
-            <!--END PRO SIDEBAR PART-->    
+    @include('layouts.components.map') 
+    
+  </main>  
 
-           
-    <script src="{{ url('/js/jquery-3.2.1.min.js') }}" ></script>
-	<script src="{{ url('/js/bootstrap.js') }}" ></script>
-    <script src="{{ url('/js/bootstrap.min.js') }}"></script>
-    <script src="{{ url('/js/navbar.js') }}"></script> 
-    <script src="{{ url('/js/sidebar.js') }}"></script> 
- 
+  <footer class="footer-all">
+  <svg style="z-index:0;position:absolute;height:400px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+    <path fill="#563d7c" fill-opacity="1" d="M0,0L30,32C60,64,120,128,180,170.7C240,213,300,235,360,208C420,181,480,107,540,117.3C600,128,660,224,720,250.7C780,277,840,235,900,218.7C960,203,1020,213,1080,234.7C1140,256,1200,288,1260,293.3C1320,299,1380,277,1410,266.7L1440,256L1440,320L1410,320C1380,320,1320,320,1260,320C1200,320,1140,320,1080,320C1020,320,960,320,900,320C840,320,780,320,720,320C660,320,600,320,540,320C480,320,420,320,360,320C300,320,240,320,180,320C120,320,60,320,30,320L0,320Z"></path>
+  </svg>
+
+  <div class="row footer-core">
+      <div class="col-lg-3" style="text-align:center">
+        <img src="{{ url('/img/business.png')}}" class="img-footer">
+        <p style="color:white;font-size:11px">Grow quickly your company by installing our device</p>
+        <button class="btn btn-info">Contact us</button>
+      </div>
+      <div class="col-lg-6" id="sub-btn" style="text-align:center">
+                  <h4>Keep me updated!</h4>
+                  <div class="input-group">
+                      <input type="text" class="form-control in-custom" placeholder="Your email address please..." aria-label="Your email address please..." >
+                      <div class="input-group-append">
+                          <button class="btn btn-outline-primary btn-news" type="button" id="button-addon2"><i class="fa fa-envelope"></i>  Subscribe</button>
+                      </div>
+                  </div>
+        </div>
+      <div class="col-lg-3 mix">
+        Powered by : <img src="{{ url('/img/enfin.png')}}" style="width:120px"/>
+      </div>
+  </div>
+</footer>       
+    @include('layouts.components.footer-scripts-home')
+    <script>
+    $(document).ready(function(){
+                $('#navbarSupportedContent ul li').removeClass("active");
+                $("#dashboard").addClass('active');
+            });
+    </script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBimtX2LxnwbpowGkJhFGAtkVTsYAdNcsM&callback=initMap"></script>
     <script>
             function initMap() {

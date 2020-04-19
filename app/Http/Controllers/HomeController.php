@@ -25,4 +25,19 @@ class HomeController extends Controller
     {
         return view('home');
     }
+    public function manager(){
+        return view('vehicle-manager');
+    }
+    public function pricing(){
+        return view('pricing');
+    }
+    public function support(){
+        return view('support');
+    }
+    public function setting(){
+        return view('settings');
+    }
+    public function addVehicle(){
+        return view('add-vehicle');
+    }
 }

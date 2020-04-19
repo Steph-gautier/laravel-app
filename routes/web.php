@@ -16,3 +16,9 @@ use Illuminate\Support\Facades\Route;
 Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/vehicle-manager', 'HomeController@manager');
+Route::get('/pricing', 'HomeController@pricing');
+Route::get('/support', 'HomeController@support');
+Route::get('/setting', 'HomeController@setting');
+
+Route::get('/add-vehicle', 'HomeController@addVehicle');
