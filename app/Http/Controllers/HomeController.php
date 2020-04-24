@@ -25,6 +25,9 @@ class HomeController extends Controller
     {
         return view('home');
     }
+    public function login(){
+        return view('auth/login');
+    }
     public function manager(){
         return view('vehicle-manager');
     }
@@ -37,7 +40,10 @@ class HomeController extends Controller
     public function setting(){
         return view('settings');
     }
-    public function addVehicle(){
-        return view('add-vehicle');
+    public function addvehicle(){
+        return view('layouts/vehicle-relatives/add-vehicle');
+    }
+    public function addvehiclepremium(){
+        return view('layouts/vehicle-relatives/add-vehicle-premium');
     }
 }

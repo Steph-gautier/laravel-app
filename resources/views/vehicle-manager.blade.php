@@ -6,6 +6,10 @@
 
         <title>GPS-Cameroon</title>
         @include('layouts.components.header-links-home')
+        <link rel="stylesheet" href="{{ url('/css/stacked-cards.css') }}">
+        <link rel="stylesheet" href="{{ url('/css/vehicle-dashboard/kendo.default-v2.min.css') }}">
+        <link rel="stylesheet" href="{{ url('/css/vehicle-dashboard/style-for-it.css') }}">
+
 </head>
     <body>
         @include('layouts.components.navbar')
@@ -16,9 +20,34 @@
     
               <div class="row">
                       <div class="col-lg-3">
-                        <h2 class="purple">Graphical datas </h2> 
-                        
+                        <h2 class="purple">Vehicle Dashboard </h2> 
+                        <div class="battery onscreen">
+    <div class="bubbles battery-bubbles">
+        <span>&nbsp;</span>
+    </div>
+    <div class="liquid liquid-bg-color">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="300px" height="5px" viewBox="0 0 300 5" enable-background="new 0 0 300 5" xml:space="preserve">
+            <path fill="#00fa57" class="wave" d="M300,300V2.5c0,0-0.6-0.1-1.1-0.1c0,0-25.5-2.3-40.5-2.4c-15,0-40.6,2.4-40.6,2.4
+            c-12.3,1.1-30.3,1.8-31.9,1.9c-2-0.1-19.7-0.8-32-1.9c0,0-25.8-2.3-40.8-2.4c-15,0-40.8,2.4-40.8,2.4c-12.3,1.1-30.4,1.8-32,1.9
+            c-2-0.1-20-0.8-32.2-1.9c0,0-3.1-0.3-8.1-0.7V300H300z" />
+        </svg>
+    </div><!-- .liquid -->
+</div>
+<div class="battery-text onscreen">
+    <span class="percentage"></span><small class="units"></small>
+</div>
+<div class="page-spacer"></div>
+
+                        <div id="example">
+                          <div id="gauge-container" class="hidden-on-narrow">
+                              <div id="rpm"></div>
+                              <div id="kmh"></div>
+                              <div id="fuel"></div>
+                          </div>
+                          
+                          <div class="responsive-message"></div>
                       </div>
+</div>
                       <div class="col-lg-5">
                           <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                               <div class="panel panel-default">
@@ -62,7 +91,16 @@
                                   </div>
                                   <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
                                       <div class="panel-body">
-                                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nisl lorem, dictum id pellentesque at, vestibulum ut arcu. Curabitur erat libero, egestas eu tincidunt ac, rutrum ac justo. Vivamus condimentum laoreet lectus, blandit posuere tortor aliquam vitae. Curabitur molestie eros. </p>
+                                      <div class="wrapper">
+                                          <div class="special">
+                                            <div id="counter">				
+                                              <div id="shading"></div>
+                                            </div>
+                                            <div class="plan-des">
+                                              <h3>Standard Plan</h3>
+                                              <button class="btn btn-outline-warning">Upgrade</button> 
+                                            </div>
+                                          </div>
                                       </div>
                                   </div>
                               </div>
@@ -83,6 +121,17 @@
                               </div>
                           </div>
                       </div>
+                      <svg
+  width="100"
+  height="100"
+  viewBox="0 0 600 600"
+  xmlns="http://www.w3.org/2000/svg"
+  style="float:right;"
+>
+  <g transform="translate(300,300)">
+    <path d="M150,-211.7C187.8,-178.9,207.6,-126.4,211.6,-77.4C215.6,-28.4,203.8,17,183.8,53.8C163.7,90.7,135.4,119,103.3,146.4C71.3,173.8,35.7,200.4,-0.1,200.5C-35.9,200.7,-71.7,174.4,-101.8,146.3C-131.9,118.3,-156.3,88.5,-175.8,51.7C-195.3,14.8,-209.9,-29,-191,-54.3C-172.2,-79.6,-119.9,-86.3,-82.5,-119.3C-45.1,-152.4,-22.5,-211.7,16.8,-234.7C56,-257.8,112.1,-244.6,150,-211.7Z" fill="#563d7c" />
+  </g>
+</svg>
                   </div>
                   <div class="stage">
                 <h3><div class="title">Select your current vehicle</div></h3>
@@ -208,9 +257,9 @@
                           </div>
                         </div>
                       </div>
-                      <div class="stackedcards--animatable stackedcards-overlay top"><i class="fa fa-arrow-left fa-2x purple"></i></div>
-                      <div class="stackedcards--animatable stackedcards-overlay right"><i class="fa fa-check inverse-success"></i></div>
-                      <div class="stackedcards--animatable stackedcards-overlay left"><i class="fa fa-arrow-right fa-2x purple"></i></div>
+                      <div class="stackedcards--animatable stackedcards-overlay top"><i class="fa fa-check fa-2x purple"></i></div>
+                      <div class="stackedcards--animatable stackedcards-overlay right"><i class="fa fa-arrow-right inverse-success"></i></div>
+                      <div class="stackedcards--animatable stackedcards-overlay left"><i class="fa fa-arrow-left fa-2x purple"></i></div>
                     </div>
                     <div class="global-actions">
                       <div class="left-action"><i class="fa fa-arrow-left fa-2x purple"></i></div>
@@ -227,32 +276,9 @@
 <a href="/home" class="float" target="_blank">
   <i class="fas fa-route my-float"></i>
 </a>
-<footer class="footer-all">
-  <svg style="z-index:0;position:absolute;height:400px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-    <path fill="#563d7c" fill-opacity="1" d="M0,0L30,32C60,64,120,128,180,170.7C240,213,300,235,360,208C420,181,480,107,540,117.3C600,128,660,224,720,250.7C780,277,840,235,900,218.7C960,203,1020,213,1080,234.7C1140,256,1200,288,1260,293.3C1320,299,1380,277,1410,266.7L1440,256L1440,320L1410,320C1380,320,1320,320,1260,320C1200,320,1140,320,1080,320C1020,320,960,320,900,320C840,320,780,320,720,320C660,320,600,320,540,320C480,320,420,320,360,320C300,320,240,320,180,320C120,320,60,320,30,320L0,320Z"></path>
-  </svg>
-
-  <div class="row footer-core">
-      <div class="col-lg-3" style="text-align:center">
-        <img src="{{ url('/img/business.png')}}" class="img-footer">
-        <p style="color:white;font-size:11px">Grow quickly your company by installing our device</p>
-        <button class="btn btn-info">Contact us</button>
-      </div>
-      <div class="col-lg-6" id="sub-btn" style="text-align:center">
-                  <h4>Keep me updated!</h4>
-                  <div class="input-group">
-                      <input type="text" class="form-control in-custom" placeholder="Your email address please..." aria-label="Your email address please..." >
-                      <div class="input-group-append">
-                          <button class="btn btn-outline-primary btn-news" type="button" id="button-addon2"><i class="fa fa-envelope"></i>  Subscribe</button>
-                      </div>
-                  </div>
-        </div>
-      <div class="col-lg-3 mix">
-        Powered by : <img src="{{ url('/img/enfin.png')}}" style="width:120px"/>
-      </div>
-  </div>
-</footer>
+@include('auth.footer-newsletter')  
 @include('layouts.components.footer-scripts-home')
+<script src="{{ url('/js/stacked-cards.js') }}"></script>
         <script>
             $(document).ready(function(){
                 $('#navbarSupportedContent ul li').removeClass("active");
@@ -260,5 +286,9 @@
                 $(".page-wrapper").removeClass("toggled");
             });
         </script>
+        <script src="{{ url('/js/vehicle-dashboard/kendo.all.min.js') }}"></script>
+        <script src="{{ url('/js/vehicle-dashboard/script-for-it.js') }}"></script>
+
+
     </body>
 </html>

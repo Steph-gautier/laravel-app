@@ -30,7 +30,7 @@
       <!-- sidebar-header  -->
       <div class="sidebar-search">
         <div>
-                <button class="btn btn-info"><i class="fa fa-plus" style="font-size:8px"></i><i class="fas fa-car-side"></i> Add a new vehicle?</button>
+                <a role="button" href="/pricing" class="btn btn-info"><i class="fa fa-plus" style="font-size:8px"></i><i class="fas fa-car-side"></i> Add a new vehicle?</a>
 
         </div>
       </div>
@@ -43,43 +43,46 @@
           <li class="sidebar-dropdown">
             <a href="#">
               <i class="fa fa-tachometer-alt"></i>
-              <span>Dashboard</span>
+              <span>Current Vehicle</span>
               <span class="badge badge-pill badge-warning">New</span>
             </a>
             <div class="sidebar-submenu">
               <ul>
+                <h6 class="sub-menu-sidebar">Vehicle State  <span style="float:right" class="badge badge-pill badge-success">Real Time</span></h6>
                 <li>
-                  <a href="#">Dashboard 1
-                    <span class="badge badge-pill badge-success">Pro</span>
+                  <a href="#">Speed (Km/h) : <b>50</b>
                   </a>
                 </li>
                 <li>
-                  <a href="#">Dashboard 2</a>
+                  <a href="#">Geo Fence (m): <b>40</b></a>
                 </li>
                 <li>
-                  <a href="#">Dashboard 3</a>
+                  <a href="#">Device battery (%): <b>40</b></a>
                 </li>
               </ul>
             </div>
           </li>
           <li class="sidebar-dropdown">
             <a href="#">
-              <i class="fa fa-shopping-cart"></i>
-              <span>E-commerce</span>
+              <i class="fab fa-mastodon"></i>
+              <span>Vehicle Manager</span>
               <span class="badge badge-pill badge-danger">3</span>
             </a>
             <div class="sidebar-submenu">
               <ul>
                 <li>
-                  <a href="#">Products
+                  <a href="#">Renault Clio
 
                   </a>
                 </li>
                 <li>
-                  <a href="#">Orders</a>
+                  <a href="#">Toyota Avensis</a>
                 </li>
                 <li>
-                  <a href="#">Credit cart</a>
+                  <a href="#">Mercedes ML450</a>
+                </li>
+                <li>
+                  <a href="#">More...</a>
                 </li>
               </ul>
             </div>
@@ -87,86 +90,54 @@
           <li class="sidebar-dropdown">
             <a href="#">
               <i class="far fa-gem"></i>
-              <span>Components</span>
+              <span>Pricing Table</span>
             </a>
             <div class="sidebar-submenu">
               <ul>
                 <li>
-                  <a href="#">General</a>
+                  <a href="#">Beginner</a>
                 </li>
                 <li>
-                  <a href="#">Panels</a>
+                  <a href="#">Standard</a>
                 </li>
                 <li>
-                  <a href="#">Tables</a>
-                </li>
-                <li>
-                  <a href="#">Icons</a>
-                </li>
-                <li>
-                  <a href="#">Forms</a>
+                  <a href="#">Premium</a>
                 </li>
               </ul>
             </div>
           </li>
-          <li class="sidebar-dropdown">
+          <li>
             <a href="#">
               <i class="fa fa-chart-line"></i>
-              <span>Charts</span>
+              <span>Tracking History</span>
             </a>
-            <div class="sidebar-submenu">
-              <ul>
-                <li>
-                  <a href="#">Pie chart</a>
-                </li>
-                <li>
-                  <a href="#">Line chart</a>
-                </li>
-                <li>
-                  <a href="#">Bar chart</a>
-                </li>
-                <li>
-                  <a href="#">Histogram</a>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <li class="sidebar-dropdown">
+          </li>  
+          <li>
             <a href="#">
-              <i class="fa fa-globe"></i>
-              <span>Maps</span>
+              <i class="fa fa-dollar-sign"></i>
+              <span>Transactions</span>
             </a>
-            <div class="sidebar-submenu">
-              <ul>
-                <li>
-                  <a href="#">Google maps</a>
-                </li>
-                <li>
-                  <a href="#">Open street map</a>
-                </li>
-              </ul>
-            </div>
           </li>
           <li class="header-menu">
             <span>Extra</span>
           </li>
           <li>
             <a href="#">
-              <i class="fa fa-book"></i>
-              <span>Documentation</span>
+              <i class="fas fa-headset"></i>
+              <span>Live Support</span>
               <span class="badge badge-pill badge-primary">Beta</span>
             </a>
           </li>
           <li>
             <a href="#">
-              <i class="fa fa-calendar"></i>
-              <span>Calendar</span>
+              <i class="fa fa-user"></i>
+              <span>Account informations</span>
             </a>
           </li>
           <li>
             <a href="#">
-              <i class="fa fa-folder"></i>
-              <span>Examples</span>
+              <i class="fa fa-building"></i>
+              <span>About Us</span>
             </a>
           </li>
         </ul>

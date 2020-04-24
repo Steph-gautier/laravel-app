@@ -459,7 +459,7 @@
   .chiller-theme .sidebar-wrapper .sidebar-menu .sidebar-dropdown div,
   .chiller-theme .sidebar-wrapper .sidebar-search input.search-menu,
   .chiller-theme .sidebar-wrapper .sidebar-search .input-group-text {
-      background: #c2c3c5;
+      background: #e7e8e9;
   }
   
   .chiller-theme .sidebar-wrapper .sidebar-menu .header-menu span {
@@ -480,4 +480,13 @@
   .chiller-theme .sidebar-footer>a:last-child {
       border-right: none;
   }
+  .sub-menu-sidebar{
+    font-weight: 700;
+    text-align: center;
+    background-color: #563d7c;
+    color:white;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+
   

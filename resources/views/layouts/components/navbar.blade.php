@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-mainbg bg-primary nav-style fixed-top">
-        <a class="navbar-brand navbar-logo" href="#"><h6> Cameroon GPS</h6></a>
+        <a class="navbar-brand navbar-logo" href="./home"><img src="{{ url('img/cm-logo.png')}}"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <i class="fas fa-bars text-white"></i>
         </button>
@@ -26,12 +26,20 @@
                 </li>
                <div class="user-menu-infos">
                    
-                  <a href="javascript:void(0);" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">  
+                  <a href="javascript:void(0);"  id="settings-menu" class="pop-trigger" data-toggle="popover">  
                     <div class="profile">
                         <img class="profile-picture" src="{{ url('img/user.jpg')}}" />
                         <b style="padding-left:7px; color:white">{{ ucfirst(Auth()->user()->name) }}</b>
                     </div>
-                  </a>  
+                  </a>
+                  <div id="settings-menu-dropdown" class="hide">
+                        <ul class="profilex">
+                            <li><a href="#" class="prof-menu"><i class="iconx fa fa-user"></i><span>  Account</span></a></li>
+                            <li><a href="#" class="prof-menu"><i class="iconx fas fa-file-invoice-dollar"></i><span>  Transactions</span></a></li>
+                            <li><a href="#" class="prof-menu"><i class="iconx fa fa-bell"></i><span>  Notifications</span></a></li>
+                            <li><a href="{{route('logout')}}" class="prof-menu" onclick="event.preventDefault(); document.getElementById('logout-form1').submit();"><i class="iconx fas fa-sign-out-alt"></i><span>  Logout</span></a></li>
+                        </ul>
+                </div>  
                 </div>
             </ul>
 

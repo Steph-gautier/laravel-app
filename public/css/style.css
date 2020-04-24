@@ -1,5 +1,6 @@
 body{
     background-color: rgb(204, 193, 193);
+    overflow-x: hidden;
 }
 
 .user-menu-infos{
@@ -301,7 +302,7 @@ p {
     text-decoration: none;
 }
 #accordion .panel-body{
-    padding: 2%;
+    padding: 0;
     background: #eee;
     border: none;
     border-radius: 2px;

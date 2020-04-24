@@ -70,4 +70,12 @@ function test(){
         $(this).find('ul.dropdown-menu').removeClass('show open');
     });
 
+    $("#settings-menu").popover({
+      html: true, 
+      title:'Profile',
+      placement:'left',
+      content: function() {
+       return $('#settings-menu-dropdown').html();
+      }
+  });
 });

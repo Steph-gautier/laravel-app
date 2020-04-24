@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Auth::routes(['verify' => true]);
+//MAKE THIS ONE AS THE INDEX
+Route::get('/', 'HomeController@login');
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/vehicle-manager', 'HomeController@manager');
@@ -21,4 +23,8 @@ Route::get('/pricing', 'HomeController@pricing');
 Route::get('/support', 'HomeController@support');
 Route::get('/setting', 'HomeController@setting');
 
-Route::get('/add-vehicle', 'HomeController@addVehicle');
+Route::get('/pricing/std/add-vehicle', 'HomeController@addvehicle');
+Route::get('/pricing/premium/add-vehicle', 'HomeController@addvehiclepremium');
+
+Route::get('/newsletter', 'NewsletterController@create');
+Route::post('/newsletter','NewsletterController@store');

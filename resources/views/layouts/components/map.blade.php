@@ -1,5 +1,5 @@
-<div class="container-fluid">
-    <div id="map"></div>
+
+<div id="map"></div>
             <div class="">
                 <nav class="menu">
                         <input class="menu-toggler" type="checkbox">
@@ -28,5 +28,5 @@
                 </ul>
                 </nav>
             </div>
-</div>
+
   
