@@ -83,7 +83,9 @@ body{
     vertical-align: middle;
     color: #223035;
 }
-
+.list-details{
+    width:200px;
+}
 .profile-card-4 .list-details {
 	display: table-cell;
 	vertical-align: middle;

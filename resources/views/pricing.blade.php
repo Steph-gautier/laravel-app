@@ -34,7 +34,7 @@
                                     <span class="price-amount"> <h4>FREE</h4> <span class="duration">1<sup>st</sup> month</span></span>
                                 </div>
                                 <div class="pricingTable-signup">
-                                    <a href="#">Sign Up</a>
+                                    <a href="/pricing/trial/add-vehicle">Sign Up</a>
                                 </div>
                             </div>
                         </div>

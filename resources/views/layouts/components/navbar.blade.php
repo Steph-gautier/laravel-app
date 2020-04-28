@@ -1,5 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-mainbg bg-primary nav-style fixed-top">
-        <a class="navbar-brand navbar-logo" href="./home"><img src="{{ url('img/cm-logo.png')}}"></a>
+        <a class="navbar-brand navbar-logo" href="./home"><img src="{{ url('img/camerGPS.png')}}"></a>
+        <a href="/home" class="brandName">Cameroon GPS <sup><img src="{{ url('img/network.png')}}" style="width:20px"/></sup></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <i class="fas fa-bars text-white"></i>
         </button>
@@ -35,9 +36,9 @@
                   <div id="settings-menu-dropdown" class="hide">
                         <ul class="profilex">
                             <li><a href="#" class="prof-menu"><i class="iconx fa fa-user"></i><span>  Account</span></a></li>
-                            <li><a href="#" class="prof-menu"><i class="iconx fas fa-file-invoice-dollar"></i><span>  Transactions</span></a></li>
-                            <li><a href="#" class="prof-menu"><i class="iconx fa fa-bell"></i><span>  Notifications</span></a></li>
-                            <li><a href="{{route('logout')}}" class="prof-menu" onclick="event.preventDefault(); document.getElementById('logout-form1').submit();"><i class="iconx fas fa-sign-out-alt"></i><span>  Logout</span></a></li>
+                            <li><a href="/home/transactions" class="prof-menu"><i class="iconx fas fa-file-invoice-dollar"></i><span>  Transactions</span></a></li>
+                            <li><a href="/home/notifications" class="prof-menu"><i class="iconx fa fa-bell"></i><span>  Notifications</span></a></li>
+                            <li><a href="{{route('logout')}}" class="prof-menu" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="iconx fas fa-sign-out-alt"></i><span>  Logout</span></a></li>
                         </ul>
                 </div>  
                 </div>

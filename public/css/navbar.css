@@ -7,7 +7,17 @@ PRIMARY COLOR: #563d7c
 }
 .navbar-logo>img{
 	height: 60px;
-	width: 100px;
+	width:65px;
+}
+.brandName{
+	text-decoration: none;
+	color:white;
+	font-weight: 600;
+	font-size: 22px;
+}
+.brandName:hover{
+	color:white;
+	text-decoration: none;
 }
 .navbar-mainbg{
 	padding: 0px;

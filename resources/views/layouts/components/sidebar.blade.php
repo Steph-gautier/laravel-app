@@ -87,33 +87,20 @@
               </ul>
             </div>
           </li>
-          <li class="sidebar-dropdown">
-            <a href="#">
+          <li class="">
+            <a href="/pricing">
               <i class="far fa-gem"></i>
               <span>Pricing Table</span>
             </a>
-            <div class="sidebar-submenu">
-              <ul>
-                <li>
-                  <a href="#">Beginner</a>
-                </li>
-                <li>
-                  <a href="#">Standard</a>
-                </li>
-                <li>
-                  <a href="#">Premium</a>
-                </li>
-              </ul>
-            </div>
           </li>
           <li>
-            <a href="#">
+            <a href="home/history">
               <i class="fa fa-chart-line"></i>
               <span>Tracking History</span>
             </a>
           </li>  
           <li>
-            <a href="#">
+            <a href="/home/transactions">
               <i class="fa fa-dollar-sign"></i>
               <span>Transactions</span>
             </a>
@@ -122,20 +109,20 @@
             <span>Extra</span>
           </li>
           <li>
-            <a href="#">
+            <a href="/support">
               <i class="fas fa-headset"></i>
               <span>Live Support</span>
               <span class="badge badge-pill badge-primary">Beta</span>
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="/settings">
               <i class="fa fa-user"></i>
               <span>Account informations</span>
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="/support#about">
               <i class="fa fa-building"></i>
               <span>About Us</span>
             </a>
@@ -150,7 +137,7 @@
         <i class="fa fa-bell white"></i>
         <span class="badge badge-pill badge-warning notification">3</span>
       </a>
-      <a href="#">
+      <a href="home/transactions">
         <i class="fa fa-envelope white"></i>
         <span class="badge badge-pill badge-success notification">7</span>
       </a>

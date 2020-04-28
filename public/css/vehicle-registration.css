@@ -128,7 +128,8 @@ select.list-dt:focus {
 #progressbar {
     margin-bottom: 30px;
     overflow: hidden;
-    color: lightgrey
+    color: lightgrey;
+    margin-right: 30px;
 }
 
 #progressbar .active {
@@ -158,6 +159,12 @@ select.list-dt:focus {
 #progressbar #payment:before {
     font-family: "Font Awesome 5 Free";
     content: "\f09d";
+}
+
+#progressbar #gift:before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f06b";
+    font-weight: 700;
 }
 
 #progressbar #confirm:before {

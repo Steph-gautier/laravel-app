@@ -161,6 +161,9 @@
                             </tr>
                         </tbody> 
                     </table>
+                    <div class="text-center">
+                        <button class="btn btn-success" style="text-align:center"><i class="fa fa-download"></i> Download PDF</button>
+                    </div>             
                 </div>
                 <div class="tab-pane" id="edit">
                     <form>

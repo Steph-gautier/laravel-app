@@ -18,7 +18,7 @@
         <main class="page-content">
         <div class="container-fluid" style="margin-top:6%">
     
-              <div class="row">
+              <div class="row states">
                       <div class="col-lg-3">
                         <h2 class="purple">Vehicle Dashboard </h2> 
                         <div class="battery onscreen">
@@ -37,19 +37,9 @@
     <span class="percentage"></span><small class="units"></small>
 </div>
 <div class="page-spacer"></div>
-
-                        <div id="example">
-                          <div id="gauge-container" class="hidden-on-narrow">
-                              <div id="rpm"></div>
-                              <div id="kmh"></div>
-                              <div id="fuel"></div>
-                          </div>
-                          
-                          <div class="responsive-message"></div>
-                      </div>
 </div>
                       <div class="col-lg-5">
-                          <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                          <!--<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                               <div class="panel panel-default">
                                   <div class="panel-heading" role="tab" id="headingOne">
                                       <h4 class="panel-title">
@@ -119,9 +109,19 @@
                                       </div>
                                   </div>
                               </div>
+                          </div>-->
+                          
+                        <div id="example">
+                          <div id="gauge-container" class="hidden-on-narrow">
+                              <div id="rpm"></div>
+                              <div id="kmh"></div>
+                              <div id="fuel"></div>
                           </div>
+                          
+                          <div class="responsive-message"></div>
                       </div>
-                      <svg
+                      </div>
+                      <!---<svg
   width="100"
   height="100"
   viewBox="0 0 600 600"
@@ -131,7 +131,7 @@
   <g transform="translate(300,300)">
     <path d="M150,-211.7C187.8,-178.9,207.6,-126.4,211.6,-77.4C215.6,-28.4,203.8,17,183.8,53.8C163.7,90.7,135.4,119,103.3,146.4C71.3,173.8,35.7,200.4,-0.1,200.5C-35.9,200.7,-71.7,174.4,-101.8,146.3C-131.9,118.3,-156.3,88.5,-175.8,51.7C-195.3,14.8,-209.9,-29,-191,-54.3C-172.2,-79.6,-119.9,-86.3,-82.5,-119.3C-45.1,-152.4,-22.5,-211.7,16.8,-234.7C56,-257.8,112.1,-244.6,150,-211.7Z" fill="#563d7c" />
   </g>
-</svg>
+</svg>-->
                   </div>
                   <div class="stage">
                 <h3><div class="title">Select your current vehicle</div></h3>
@@ -271,6 +271,63 @@
               
 
 <div class="final-state hidden"><h2>Got it! We received your preferences! <br/> To submit again, press F5.</h2></div>
+    <div class="row">
+    <div class="panel-group container-fluid" id="accordion" role="tablist" aria-multiselectable="true">
+                              <div class="panel panel-default col-lg-4">
+                                  <div class="panel-heading" role="tab" id="headingOne">
+                                      <h4 class="panel-title">
+                                          <a role="button" class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                              General Informations
+                                              <img class="accordion-img" src="{{ url('/img/computer.png')}}" style="width:100px">
+                                          </a>
+                                      </h4>
+                                  </div>
+                                  <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                                      <div class="panel-body">
+                                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nisl lorem, dictum id pellentesque at, vestibulum ut arcu. Curabitur erat libero, egestas eu tincidunt ac, rutrum ac justo. Vivamus condimentum laoreet lectus, blandit posuere tortor aliquam vitae. Curabitur molestie eros. </p>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="panel panel-default col-lg-4">
+                                  <div class="panel-heading" role="tab" id="headingTwo">
+                                      <h4 class="panel-title">
+                                          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                              Monitoring Operations
+                                              <img class="accordion-img" src="{{ url('/img/autonomous.png')}}" style="width:100px">
+                                          </a>
+                                      </h4>
+                                  </div>
+                                  <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                      <div class="panel-body">
+                                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nisl lorem, dictum id pellentesque at, vestibulum ut arcu. Curabitur erat libero, egestas eu tincidunt ac, rutrum ac justo. Vivamus condimentum laoreet lectus, blandit posuere tortor aliquam vitae. Curabitur molestie eros. </p>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="panel panel-default col-lg-4">
+                                  <div class="panel-heading" role="tab" id="headingThree">
+                                      <h4 class="panel-title">
+                                          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                              Remaining Time for your plan
+                                              <img class="accordion-img" src="{{ url('/img/timer.png')}}" style="width:85px">
+                                          </a>
+                                      </h4>
+                                  </div>
+                                  <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                                      <div class="panel-body">
+                                      <div class="wrapper">
+                                          <div class="special">
+                                            <div id="counter">				
+                                              <div id="shading"></div>
+                                            </div>
+                                            <div class="plan-des">
+                                              <h3>Standard Plan</h3>
+                                              <button class="btn btn-outline-warning">Upgrade</button> 
+                                            </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                            </div>
 </main>
 
 <a href="/home" class="float" target="_blank">

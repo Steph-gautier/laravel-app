@@ -1,5 +1,5 @@
 
-<div id="map"></div>
+            <div id="map"></div>
             <div class="">
                 <nav class="menu">
                         <input class="menu-toggler" type="checkbox">
@@ -27,6 +27,17 @@
                     </li>
                 </ul>
                 </nav>
+            </div>
+            <div class="control-centere">
+                <ul class="right-sidebare">
+                    <li class="history"><i class="fa fa-forward"></i></li>
+                    <li class="history"><i class="fa fa-download"></i></li>
+                </ul>
+                <div class="option-btne"></div>
+                <ul class="left-sidebare">
+                    <li class="history"><i class="fa fa-stop"></i></li>
+                    <li class="history"><i class="fa fa-backward"></i></li>
+                </ul>
             </div>
 
   

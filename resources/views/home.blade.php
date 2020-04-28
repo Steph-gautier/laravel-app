@@ -26,6 +26,10 @@
     $(document).ready(function(){
                 $('#navbarSupportedContent ul li').removeClass("active");
                 $("#dashboard").addClass('active');
+                $('.option-btne').click(function(){
+                    $(this).toggleClass('open');
+                    $('.control-centere').toggleClass('open');
+            });
             });
     </script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBimtX2LxnwbpowGkJhFGAtkVTsYAdNcsM&callback=initMap&libraries=drawing"></script>
@@ -33,10 +37,10 @@
     var marker;
             function initMap() {
         // The location of Africa
-        var africa = {lat: 21.244, lng: 12.036};
+        var africa = {lat: 7.3644, lng: 12.3436};
         var map = new google.maps.Map(
             document.getElementById('map'),
-             {zoom: 6, center: africa});
+             {zoom: 4, center: africa});
       
        var image ="{{ url('/img/mapmarker2.png')}}";
        var drawingManager = new google.maps.drawing.DrawingManager({
@@ -44,10 +48,34 @@
           drawingControl: true,
           drawingControlOptions: {
             position: google.maps.ControlPosition.TOP_CENTER,
-            drawingModes: ['circle', 'polygon', 'rectangle']
+            drawingModes: ['polyline','rectangle','circle', 'polygon']
           },
           markerOptions: {icon: image},
           circleOptions: {
+            fillColor: '#563d7c',
+            fillOpacity: 0.5,
+            strokeWeight: 5,
+            clickable: false,
+            editable: true,
+            zIndex: 1
+          },
+          polylineOptions: {
+            fillColor: '#563d7c',
+            fillOpacity: 0.5,
+            strokeWeight: 5,
+            clickable: false,
+            editable: true,
+            zIndex: 1
+          },
+          rectangleOptions: {
+            fillColor: '#563d7c',
+            fillOpacity: 0.5,
+            strokeWeight: 5,
+            clickable: false,
+            editable: true,
+            zIndex: 1
+          },
+          polygonOptions: {
             fillColor: '#563d7c',
             fillOpacity: 0.5,
             strokeWeight: 5,

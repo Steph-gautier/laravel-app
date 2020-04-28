@@ -40,6 +40,10 @@ class HomeController extends Controller
     public function setting(){
         return view('settings');
     }
+
+    public function addvehicletrial(){
+        return view('layouts/vehicle-relatives/add-vehicle-trial');
+    }
     public function addvehicle(){
         return view('layouts/vehicle-relatives/add-vehicle');
     }

@@ -233,20 +233,13 @@ p {
 }
 
 #accordion{
-    padding-left: 80px;
     overflow: hidden;
     position: relative;
     z-index: 1;
+    display: inherit;
 }
-#accordion:before{
-    content: "";
-    width: 5px;
-    height: 100%;
-    background: #563d7c;
-    position: absolute;
-    top: 0;
-    left: 22px;
-    z-index: -1;
+.states{
+    min-height: 520px;
 }
 #accordion .panel{
     border: none;
@@ -260,15 +253,12 @@ p {
     border-radius: 0;
 }
 #accordion .panel-title a{
-    display: block;
+    display: inherit;
     padding:30px;
     background: #fff;
     font-size: 18px;
     font-weight: bold;
     color: #563d7c;
-    position: relative;
-    transition: all 0.5s ease 0s;
-    border-top-right-radius: 60px;
 }
 .accordion-img{
     float: right;
@@ -276,28 +266,7 @@ p {
     top:-30px;
 }
 
-#accordion .panel-title a:before{
-    content: "\f068";
-    font-family: "Font Awesome 5 Free";
-    font-weight: 900;
-    width: 50px;
-    height: 50px;
-    line-height: 40px;
-    border-radius: 50%;
-    background: #cad5c2;
-    text-align: center;
-    font-size: 17px;
-    color: #563d7c;
-    border: 6px solid #563d7c;
-    position: absolute;
-    top: 20px;
-    left: -80px;
-}
 
-#accordion .panel-title a.collapsed:before{
-    content: "\f067";
-    background: #fff;
-}
 .collapsed:hover{
     text-decoration: none;
 }
@@ -379,6 +348,8 @@ footer{
 .in-custom{
     border:2px solid white;
     height: 52px;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
 }
 .btn-news{
     background-color: transparent;
