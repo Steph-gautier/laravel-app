@@ -30,10 +30,11 @@ Route::get('/pricing/premium/add-vehicle', 'HomeController@addvehiclepremium');
 
 //SENDING REQUEST FOR ADDING A VEHICLE
 Route::post('/add-trial', 'VehicleController@addtrial');
+Route::post('/device-infos', 'DeviceController@adddeviceinfos');
 Route::get('/add-standard', 'VehicleController@addvehicle');
 Route::get('/add-premium', 'VehicleController@addvehiclepremium');
 
-Route::get('/newsletter', 'NewsletterController@create');
+Route::get('/newsletter-resp','NewsletterController@create');
 Route::post('/newsletter','NewsletterController@store');
 
 //REQUESTS FOR OTHERS PAGES

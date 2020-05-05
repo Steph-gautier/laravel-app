@@ -24,7 +24,7 @@ class NewsletterController extends Controller
      */
     public function create()
     {
-        return view('newsletter');
+        return view('newsletter-resp');
     }
 
     /**
@@ -38,9 +38,9 @@ class NewsletterController extends Controller
         if ( ! Newsletter::isSubscribed($request->email) ) 
         {
             Newsletter::subscribePending($request->email);
-            return redirect('newsletter')->with('success', 'Thanks For Subscribe');
+            return redirect('newsletter-resp')->with('success', 'Thanks For Subscribing to our newsletter! We will keep you updated about our differents news and also provide you a good assistance remotely');
         }
-        return redirect('newsletter')->with('failure', 'Sorry! You have already subscribed ');
+        return redirect('newsletter-resp')->with('failure', 'Sorry! You have already subscribed, Please try again with another email address ');
  
     }
 

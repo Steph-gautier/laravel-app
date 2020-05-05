@@ -13,6 +13,7 @@
                   <h4>Keep me updated!</h4>
                   <form method="post" action="{{url('newsletter')}}">
                   <div class="input-group">
+                  {{csrf_field()}}
                       <input type="email" name="email" class="form-control in-custom" placeholder="Your email address please..." aria-label="Your email address please..." >
                       <div class="input-group-append">
                           <button class="btn btn-outline-primary btn-news" type="submit" id="button-addon2"><i class="fa fa-envelope"></i>  Subscribe</button>

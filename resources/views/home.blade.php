@@ -35,7 +35,7 @@
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBimtX2LxnwbpowGkJhFGAtkVTsYAdNcsM&callback=initMap&libraries=drawing"></script>
     <script>
     var marker;
-            function initMap() {
+    function initMap() {
         // The location of Africa
         var africa = {lat: 7.3644, lng: 12.3436};
         var map = new google.maps.Map(
@@ -45,7 +45,7 @@
        var image ="{{ url('/img/mapmarker2.png')}}";
        var drawingManager = new google.maps.drawing.DrawingManager({
           drawingMode: google.maps.drawing.OverlayType.MARKER,
-          drawingControl: true,
+          drawingControl: false,
           drawingControlOptions: {
             position: google.maps.ControlPosition.TOP_CENTER,
             drawingModes: ['polyline','rectangle','circle', 'polygon']
@@ -54,7 +54,7 @@
           circleOptions: {
             fillColor: '#563d7c',
             fillOpacity: 0.5,
-            strokeWeight: 5,
+            strokeWeight: 1,
             clickable: false,
             editable: true,
             zIndex: 1
@@ -62,7 +62,7 @@
           polylineOptions: {
             fillColor: '#563d7c',
             fillOpacity: 0.5,
-            strokeWeight: 5,
+            strokeWeight: 2,
             clickable: false,
             editable: true,
             zIndex: 1
@@ -70,7 +70,7 @@
           rectangleOptions: {
             fillColor: '#563d7c',
             fillOpacity: 0.5,
-            strokeWeight: 5,
+            strokeWeight: 1,
             clickable: false,
             editable: true,
             zIndex: 1
@@ -78,7 +78,7 @@
           polygonOptions: {
             fillColor: '#563d7c',
             fillOpacity: 0.5,
-            strokeWeight: 5,
+            strokeWeight: 1,
             clickable: false,
             editable: true,
             zIndex: 1
@@ -107,37 +107,6 @@
             marker.setAnimation(google.maps.Animation.BOUNCE);
           }
         }*/
-        var infoWindow;
-        function geolocalize(){
-        infoWindow = new google.maps.InfoWindow;
-        // Try HTML5 geolocation.
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(function(position) {
-            var pos = {
-              lat: position.coords.latitude,
-              lng: position.coords.longitude
-            };
-
-            infoWindow.setPosition(pos);
-            infoWindow.setContent('Location found.');
-            infoWindow.open(map);
-            map.setCenter(pos);
-          }, function() {
-            handleLocationError(true, infoWindow, map.getCenter());
-          });
-        } else {
-          // Browser doesn't support Geolocation
-          handleLocationError(false, infoWindow, map.getCenter());
-        }
-      }
-
-      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-        infoWindow.setPosition(pos);
-        infoWindow.setContent(browserHasGeolocation ?
-                              'Error: The Geolocation service failed.' :
-                              'Error: Your browser doesn\'t support geolocation.');
-        infoWindow.open(map);
-        }
 
 
         /*

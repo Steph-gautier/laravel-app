@@ -24,11 +24,11 @@
             <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
                 <h2><strong>(Beginner Plan) ADD A NEW CAR</strong></h2>
                 <p>Fill this form it is almost finished :)</p>
+                <div class="alert alert-success" style="display:none"></div>
                 <div class="row">
                     <div class="col-md-12 mx-0">
-                        <form id="msform" action="{{ url('add-trial') }}" method="post">
+                        <form id="msform" novalidate="">
                             <!-- progressbar -->
-                            {{ csrf_field()}}
                             <ul id="progressbar">
                                 <li class="active" id="account"><strong>Vehicle Parameters</strong></li>
                                 <li id="personal"><strong>Device Parameters</strong></li>
@@ -37,21 +37,51 @@
                             </ul> <!-- fieldsets -->
                             <fieldset>
                                 <div class="form-card">
-                                    <h2 class="fs-title">Vehicle Information</h2><br/> 
-                                    <input type="text" name="brandname" placeholder="Brand name of the vehicle. e.g Toyota, Renault, Suziki,..." />
-                                     <input type="text" name="version" placeholder="Version or model of your vehicle. e.g: Toyota Avensis 2002" />
-                                      <input type="text" name="matriculatNbr" placeholder="Enter your matriculation number." />
-                                       <input type="text" name="color" placeholder="Which color your vehicle have?" />
-                                </div> <input type="button" name="next" class="next action-button btn btn-primary" value="Next Step" />
+                                    <h2 class="fs-title">Vehicle Information</h2><br/>
+                                    {{ csrf_field()}} 
+                                    <div class="form-group">  
+                                        <input id="brandname" required class="form-control @error('brandname') is-invalid @enderror" type="text" name="brandname" placeholder="Brand name of the vehicle. e.g Toyota, Renault, Suziki,..." />
+                                        @error('brandname')
+                                            <div class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </div>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">  
+                                        <input id="version" required class="form-control @error('version') is-invalid @enderror" type="text" name="version" placeholder="Version or model of your vehicle. e.g: Toyota Avensis 2002" />
+                                        @error('version')
+                                            <div class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </div>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">  
+                                        <input id="matriculationNbr" required class="form-control @error('matriculatNbr') is-invalid @enderror" type="text" name="matriculatNbr" placeholder="Enter your matriculation number." />
+                                        @error('matriculatNbr')
+                                            <div class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </div>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">    
+                                        <input id="color" required class="form-control @error('color') is-invalid @enderror" type="text" name="color" placeholder="Which color your vehicle have?" />
+                                        @error('color')
+                                            <div class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </div>
+                                        @enderror
+                                    </div>
+                                </div> <input type="button" name="next" class="action-button btn btn-primary" id="add-trial" value="Next Step" />
                             </fieldset>
                             <fieldset>
                                 <div class="form-card">
                                     <h2 class="fs-title">Device Information</h2><span>Take your device and fill all the corresponding fields here...<br/></span> 
-                                    <input type="text" name="deviceId" placeholder="Device ID: (Notice: read behind your device)" />
-                                     <input type="text" name="subscribedPlan" value="STANDARD" />
-                                      <input type="text" name="owner" placeholder="This is car is owned by... (eg:a company, a particular)" />
-                                       <input type="text" name="addedvia" placeholder="A Contact phone number just in case..." />
-                                </div> <input type="button" name="previous" class="previous action-button-previous" value="Previous" /> <input type="submit" name="next" class="next action-button" value="Next Step" />
+                                    <input id="deviceID" type="text" name="deviceId" placeholder="Device ID: (Notice: read behind your device)" />
+                                     <input id="subscribedPlan" type="text" name="subscribedPlan" value="STANDARD" />
+                                      <input id="owner" type="text" name="owner" placeholder="This is car is owned by... (eg:a company, a particular)" />
+                                       <input id="speed" type="text" name="addedvia" placeholder="A Contact phone number just in case..." />
+                                </div> <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
+                                    <input type="button" name="next" id="validate_device" class="next action-button" value="Next Step" />
                             </fieldset>
                             <fieldset>
                                 <div class="form-card">
@@ -83,5 +113,56 @@
 </div>
         @include('layouts.components.footer-scripts')
         <script src="{{ url('/js/vehicle-registration.js') }}"></script>
+        <script>
+        jQuery(document).ready(function(){
+            //VALIDATE FIRST STEP
+            jQuery('#add-trial').click(function(e){
+                e.preventDefault();
+                $.ajaxSetup({
+                    headers: {
+                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                    }
+                });
+                var token = $("input[name='_token']").val();
+                var current_fs, next_fs, previous_fs; //fieldsets
+                var opacity;
+                $.ajax({
+                    url: "{{ url('/add-trial') }}",
+                    type: 'POST',
+                    data: {
+                        _token:token,
+                        brandname: jQuery('#brandname').val(),
+                        version: jQuery('#version').val(),
+                        matriculationNbr: jQuery('#matriculationNbr').val(),
+                        color: jQuery('#color').val(),
+                    },
+                    success: function(result){
+
+                        }
+                    });
+            });
+            //VALIDATE SECOND STEP
+            jQuery('#validate_device').click(function(e){
+                e.preventDefault();
+                $.ajaxSetup({
+                    headers: {
+                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                    }
+                });
+                var token = $("input[name='_token']").val();
+                $.ajax({
+                    url: "{{ url('/device-infos') }}",
+                    type: 'POST',
+                    data: {
+                        _token:token,
+                        deviceID: jQuery('#deviceID').val(),
+                        speed: jQuery('#speed').val(),
+                    },
+                    success: function(result){
+                    console.log(result);
+                }});
+            });
+        });
+    </script>    
 </body>   
 </html> 

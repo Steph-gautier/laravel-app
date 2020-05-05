@@ -36,7 +36,7 @@
                         <div class="row justify-content-md-center h-100">
                             <div class="card-wrapper card-register">
                                 <div class="brand">
-                                    <img class="logo" src="{{ url('/img/logo.png') }}" alt="logo">
+                                    <img class="logo" src="{{ url('/img/CamerGPS.png') }}" alt="logo">
                                 </div>
                                 <div class="card fat">
 						<div class="card-body">
