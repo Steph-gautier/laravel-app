@@ -34,20 +34,31 @@
     </script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBimtX2LxnwbpowGkJhFGAtkVTsYAdNcsM&callback=initMap&libraries=drawing"></script>
     <script>
-    var marker;
+    var marker, infoWindow;
     function initMap() {
         // The location of Africa
         var africa = {lat: 7.3644, lng: 12.3436};
         var map = new google.maps.Map(
             document.getElementById('map'),
-             {zoom: 4, center: africa});
+             {
+              zoom: 4,
+              center: africa,
+              zoomControl: true,
+              zoomControlOptions: {
+                style: google.maps.ZoomControlStyle.BIG,
+                position: google.maps.ControlPosition.RIGHT_CENTER
+              },
+              streetViewControlOptions: {
+                position: google.maps.ControlPosition.LEFT_CENTER,
+              }
+              });
       
        var image ="{{ url('/img/mapmarker2.png')}}";
        var drawingManager = new google.maps.drawing.DrawingManager({
           drawingMode: google.maps.drawing.OverlayType.MARKER,
-          drawingControl: false,
+          drawingControl: true,
           drawingControlOptions: {
-            position: google.maps.ControlPosition.TOP_CENTER,
+            position: google.maps.ControlPosition.BOTTOM_CENTER,
             drawingModes: ['polyline','rectangle','circle', 'polygon']
           },
           markerOptions: {icon: image},
@@ -84,29 +95,37 @@
             zIndex: 1
           }
         });
-        drawingManager.setMap(map);
-      }
-       /*marker = new google.maps.Marker(
-          {
-            position: africa,
-            map: map,
-            draggable:true,
-            icon: image,
-            title: "My vehicle",
-            animation: google.maps.Animation.DROP
-           }
-           );
+        drawingManager.setMap(null);
 
-           marker.addListener('click', toggleBounce);
+        infoWindow = new google.maps.InfoWindow;
+        // Try HTML5 geolocation.
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
 
+            infoWindow.setPosition(pos);
+            infoWindow.setContent('Dear <b style="font-weight:700">{{ ucfirst(Auth()->user()->name) }}</b>, This where you are located presently!');
+            infoWindow.open(map);
+            map.setCenter(pos);
+          }, function() {
+            handleLocationError(true, infoWindow, map.getCenter());
+          });
+        } else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, infoWindow, map.getCenter());
         }
-        function toggleBounce() {
-          if (marker.getAnimation() !== null) {
-            marker.setAnimation(null);
-          } else {
-            marker.setAnimation(google.maps.Animation.BOUNCE);
-          }
-        }*/
+    }
+
+      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+                              'Error: The Geolocation service failed.' :
+                              'Error: Your browser doesn\'t support geolocation.');
+        infoWindow.open(map);
+      }
 
 
         /*

@@ -17,7 +17,7 @@
                     <a class="fa fa-power-off stop" href="#"></a>
                     </li>
                     <li class="menu-item">
-                    <a class="fas fa-crosshairs check" onclick="geolocalize()" href="#"></a>
+                    <a class="fas fa-crosshairs check" href="#"></a>
                     </li>
                     <li class="menu-item">
                     <a class ="fa fa-podcast restrict" href="#"></a>
