@@ -30,30 +30,72 @@
                     $(this).toggleClass('open');
                     $('.control-centere').toggleClass('open');
             });
+
             });
     </script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBimtX2LxnwbpowGkJhFGAtkVTsYAdNcsM&callback=initMap&libraries=drawing"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBimtX2LxnwbpowGkJhFGAtkVTsYAdNcsM&callback=initMap&libraries=drawing,geometry"></script>
     <script>
+    //Display map and many other characteristics
+
     var marker, infoWindow;
     function initMap() {
+      //Fetch all previous position of a given car using ajax.
+                $.ajaxSetup({
+                          headers: {
+                          'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                          }
+                      });
+                $.ajax({
+                    url: "{{ url('/home/display/positions') }}",
+                    type: 'GET',
+                    dataType:'JSON',
+                    success: function(response){
+                            var all_positions = response['data'];
+                            var all_coordinates = all_positions.map(v => ({ lat: parseFloat(v.latitude), lng: parseFloat(v.longitude) }));
+                            console.log(all_coordinates);
+                            var historyPath = new google.maps.Polyline({
+                                path: all_coordinates,
+                                strokeColor: '#563d7c',
+                                strokeOpacity: 0.8,
+                                strokeWeight: 2,
+                                fillColor: '#563d7c',
+                                fillOpacity: 0.35
+                              });
+                              var startMarker = new google.maps.Marker({
+                                position:historyPath.getPath().getAt(0), 
+                                map:map,
+
+                              });
+                              var current_marker = new google.maps.Marker({
+                                position: historyPath.getPath().getAt(historyPath.getPath().getLength()-1),
+                                map: map,
+                                title: 'This is the vehicle',
+                                icon: image
+                              });
+
+                            historyPath.setMap(map); 
+                                              }
+                    });
         // The location of Africa
-        var africa = {lat: 7.3644, lng: 12.3436};
+        var africa = {lat: 7.36, lng: 12.34};
         var map = new google.maps.Map(
             document.getElementById('map'),
              {
-              zoom: 4,
+              zoom: 9,
               center: africa,
               zoomControl: true,
               zoomControlOptions: {
-                style: google.maps.ZoomControlStyle.BIG,
+                style: google.maps.ZoomControlStyle.LARGE,
                 position: google.maps.ControlPosition.RIGHT_CENTER
               },
               streetViewControlOptions: {
                 position: google.maps.ControlPosition.LEFT_CENTER,
-              }
+              },
+
               });
       
        var image ="{{ url('/img/mapmarker2.png')}}";
+        
        var drawingManager = new google.maps.drawing.DrawingManager({
           drawingMode: google.maps.drawing.OverlayType.MARKER,
           drawingControl: true,
@@ -96,8 +138,8 @@
           }
         });
         drawingManager.setMap(null);
-
-        infoWindow = new google.maps.InfoWindow;
+        $('#geolocate').click(function (){
+          infoWindow = new google.maps.InfoWindow;
         // Try HTML5 geolocation.
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function(position) {
@@ -117,6 +159,7 @@
           // Browser doesn't support Geolocation
           handleLocationError(false, infoWindow, map.getCenter());
         }
+        });
     }
 
       function handleLocationError(browserHasGeolocation, infoWindow, pos) {

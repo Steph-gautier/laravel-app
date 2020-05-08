@@ -51,3 +51,6 @@ Route::get('/tracking-history','pdfController@exportHistory');
 
 //SUPPORT CONVERSATION WITH CUSTOMERS
 Route::post('/support/sending-message','OthersController@postMessage');
+
+//GETTING ALL PREVIOUS POSITIONS
+Route::get('/home/display/positions', 'HomeController@getPositions');

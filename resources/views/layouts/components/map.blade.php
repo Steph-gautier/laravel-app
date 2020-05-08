@@ -8,22 +8,22 @@
                         <!--<button class="btn btn-primary switch-vehicle"> </button>-->
                 <ul>
                     <li class="menu-item">
-                    <a class="fa fa-map-marker geolo" href="#"></a>
+                    <a class="fa fa-map-marker geolo" id="geolocate" data-placement ="bottom" data-toggle = "tooltip" title = "Reach a specific vehicle" href="#"></a>
                     </li>
                     <li class="menu-item lock">
-                    <a class="fas fa-lock lock" href="#"></a>
+                    <a class="fas fa-lock lock" data-placement ="bottom" data-toggle = "tooltip" title = "Lock a specific vehicle" href="#"></a>
                     </li>
                     <li class="menu-item">
-                    <a class="fa fa-power-off stop" href="#"></a>
+                    <a class="fa fa-power-off stop" data-placement ="bottom" data-toggle = "tooltip" title = "Stop a specific vehicle" href="#"></a>
                     </li>
                     <li class="menu-item">
-                    <a class="fas fa-crosshairs check" href="#"></a>
+                    <a class="fas fa-crosshairs check" data-placement ="bottom" data-toggle = "tooltip" title = "Your location" href="#"></a>
                     </li>
                     <li class="menu-item">
-                    <a class ="fa fa-podcast restrict" href="#"></a>
+                    <a class ="fa fa-podcast restrict" data-placement ="bottom" data-toggle = "tooltip" title = "Draw a circle and restrict a specific vehicle" href="#"></a>
                     </li>
                     <li class="menu-item">
-                    <a class="fas fa-draw-polygon plan" href="#"></a>
+                    <a class="fas fa-draw-polygon plan" data-placement ="bottom" data-toggle = "tooltip" title = "Draw a polygon and restrict a specific vehicle" href="#"></a>
                     </li>
                 </ul>
                 </nav>

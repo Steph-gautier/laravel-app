@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Position;
 
 class HomeController extends Controller
 {
@@ -67,4 +68,13 @@ class HomeController extends Controller
             return view('layouts/vehicle-relatives/add-vehicle-premium');
         }
     }
+
+    //GETTING PREVIOUS POSITIONS
+    public function getPositions(){
+        // Fetch all records
+        $positionData['data'] = Position::getPreviousPositions();
+    
+        echo json_encode($positionData);
+        exit;
+      }
 }
