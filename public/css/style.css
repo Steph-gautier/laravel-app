@@ -348,8 +348,6 @@ footer{
 .in-custom{
     border:2px solid white;
     height: 52px;
-    border-top-left-radius: 25px;
-    border-bottom-left-radius: 25px;
 }
 .btn-news{
     background-color: transparent;

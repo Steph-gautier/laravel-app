@@ -9,6 +9,8 @@
         <link rel="stylesheet" href="{{ url('/css/stacked-cards.css') }}">
         <link rel="stylesheet" href="{{ url('/css/vehicle-dashboard/kendo.default-v2.min.css') }}">
         <link rel="stylesheet" href="{{ url('/css/vehicle-dashboard/style-for-it.css') }}">
+        <link rel="stylesheet" href="{{ url('/css/countdown/flipdown/flipdown.css') }}">
+        <link rel="stylesheet" href="{{ url('/css/countdown/main.css') }}">
 
 </head>
     <body>
@@ -119,7 +121,13 @@
                           </div>
                           
                           <div class="responsive-message"></div>
+                      
+                      
+                      
                       </div>
+                        <div class="text-center" style="padding-left:10%">
+                           <div id="flipdown" class="flipdown"></div>
+                        </div>
                       </div>
                       <!---<svg
   width="100"
@@ -313,18 +321,10 @@
                                       </h4>
                                   </div>
                                   <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
-                                      <div class="panel-body">
-                                      <div class="wrapper">
-                                          <div class="special">
-                                            <div id="counter">				
-                                              <div id="shading"></div>
-                                            </div>
                                             <div class="plan-des">
                                               <h3>Standard Plan</h3>
                                               <button class="btn btn-outline-warning">Upgrade</button> 
                                             </div>
-                                          </div>
-                                      </div>
                                   </div>
                               </div>
                             </div>
@@ -345,7 +345,8 @@
         </script>
         <script src="{{ url('/js/vehicle-dashboard/kendo.all.min.js') }}"></script>
         <script src="{{ url('/js/vehicle-dashboard/script-for-it.js') }}"></script>
-
+        <script src="{{ url('/js/countdown/flipdown/flipdown.js') }}"></script>
+        <script src="{{ url('/js/countdown/main.js') }}"></script>
 
     </body>
 </html>

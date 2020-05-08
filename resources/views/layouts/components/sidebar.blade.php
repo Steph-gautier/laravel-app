@@ -30,7 +30,7 @@
       <!-- sidebar-header  -->
       <div class="sidebar-search">
         <div>
-                <a role="button" href="/pricing" class="btn btn-info"><i class="fa fa-plus" style="font-size:8px"></i><i class="fas fa-car-side"></i> Add a new vehicle?</a>
+                <a role="button" href="/pricing/verification/availability" class="btn btn-info"><i class="fa fa-plus" style="font-size:8px"></i><i class="fas fa-car-side"></i> Add a new vehicle?</a>
 
         </div>
       </div>

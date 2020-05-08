@@ -19,7 +19,7 @@ class VehicleController extends Controller
             'subcribedPlan' => 'required|string|max:255',
             'addedvia' => 'required|string|min:8|confirmed',*/
         ]);
-
+        
         $data = $request->all();
         $check = $this->create($data);
         //return Redirect::to("pricing")->withSuccess('Vehicle added!');

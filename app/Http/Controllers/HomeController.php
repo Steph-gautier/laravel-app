@@ -50,4 +50,21 @@ class HomeController extends Controller
     public function addvehiclepremium(){
         return view('layouts/vehicle-relatives/add-vehicle-premium');
     }
+    //verifiying pricing eligibility
+    public function verifyEligibility(){
+        $remaining_time = 2000;
+        $current_plan ="standard";
+        if ($remaining_time == 0){
+            return view('pricing');
+        }
+        elseif($remaining_time != 0 && $current_plan == 'free'){
+            return view('pricing');
+        }
+        elseif($remaining_time != 0 && $current_plan == 'standard'){
+            return view('layouts/vehicle-relatives/add-vehicle');
+        }
+        elseif($remaining_time != 0 && $current_plan == 'premium'){
+            return view('layouts/vehicle-relatives/add-vehicle-premium');
+        }
+    }
 }

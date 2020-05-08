@@ -20,6 +20,7 @@
         </div>
      <div class="fabsv1">
         @include('layouts.components.live-chatbox')
+        <input type="hidden" id="user_id" value="{{ ucfirst(Auth()->user()->id) }}"/>
         <a id="prime" class="float1" target="_blank">
             <i class="prime fas fa-headset my-float1" style="color:#563d7c"></i>
         </a>
@@ -35,6 +36,32 @@
                 $('#navbarSupportedContent ul li').removeClass("active");
                 $("#more").addClass('active');
             });
+        </script>
+        <script>
+            jQuery(document).ready(function(){
+            //VALIDATE FIRST STEP
+            jQuery('#fabv1_send').click(function(e){
+                e.preventDefault();
+                $.ajaxSetup({
+                    headers: {
+                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                    }
+                });
+                var token = $("input[name='_token']").val();
+                $.ajax({
+                    url: "{{ url('/support/sending-message') }}",
+                    type: 'POST',
+                    data: {
+                        _token:token,
+                        user_id: $('#user_id').val(),
+                        message: jQuery('#chatSend').val(),
+                    },
+                    success: function(result){
+                            
+                        }
+                    });
+            });
+        });
         </script>
     </body>
 </html>

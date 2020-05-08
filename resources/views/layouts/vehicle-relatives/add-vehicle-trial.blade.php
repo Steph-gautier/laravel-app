@@ -40,7 +40,7 @@
                                     <h2 class="fs-title">Vehicle Information</h2><br/>
                                     {{ csrf_field()}} 
                                     <div class="form-group">  
-                                        <input id="brandname" required class="form-control @error('brandname') is-invalid @enderror" type="text" name="brandname" placeholder="Brand name of the vehicle. e.g Toyota, Renault, Suziki,..." />
+                                        <input id="brandname" required class="form-control @error('brandname') is-invalid @enderror" type="text" name="brandname" placeholder="Brand name of the vehicle. e.g Toyota, Renault, Suziki,..." value="{{ old('brandname') }}"/>
                                         @error('brandname')
                                             <div class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -48,7 +48,7 @@
                                         @enderror
                                     </div>
                                     <div class="form-group">  
-                                        <input id="version" required class="form-control @error('version') is-invalid @enderror" type="text" name="version" placeholder="Version or model of your vehicle. e.g: Toyota Avensis 2002" />
+                                        <input id="version" required class="form-control @error('version') is-invalid @enderror" type="text" name="version" placeholder="Version or model of your vehicle. e.g: Toyota Avensis 2002" value="{{ old('version') }}"/>
                                         @error('version')
                                             <div class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -56,28 +56,28 @@
                                         @enderror
                                     </div>
                                     <div class="form-group">  
-                                        <input id="matriculationNbr" required class="form-control @error('matriculatNbr') is-invalid @enderror" type="text" name="matriculatNbr" placeholder="Enter your matriculation number." />
-                                        @error('matriculatNbr')
+                                        <input id="matriculationNbr" required class="form-control @error('matriculationNbr') is-invalid @enderror" type="text" name="matriculationNbr" placeholder="Enter your matriculation number." value="{{ old('matriculationNbr') }}"/>
+                                        @error('matriculationNbr')
                                             <div class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </div>
                                         @enderror
                                     </div>
                                     <div class="form-group">    
-                                        <input id="color" required class="form-control @error('color') is-invalid @enderror" type="text" name="color" placeholder="Which color your vehicle have?" />
+                                        <input id="color" required class="form-control @error('color') is-invalid @enderror" type="text" name="color" placeholder="Which color your vehicle have?" value="{{ old('color') }}"/>
                                         @error('color')
                                             <div class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </div>
                                         @enderror
                                     </div>
-                                </div> <input type="button" name="next" class="action-button btn btn-primary" id="add-trial" value="Next Step" />
+                                </div> <input type="button" name="next" class="next action-button btn btn-primary" id="add-trial" value="Next Step" />
                             </fieldset>
                             <fieldset>
                                 <div class="form-card">
                                     <h2 class="fs-title">Device Information</h2><span>Take your device and fill all the corresponding fields here...<br/></span> 
                                     <input id="deviceID" type="text" name="deviceId" placeholder="Device ID: (Notice: read behind your device)" />
-                                     <input id="subscribedPlan" type="text" name="subscribedPlan" value="STANDARD" />
+                                     <input id="subscribedPlan" type="text" name="subscribedPlan" value="BEGINNER" />
                                       <input id="owner" type="text" name="owner" placeholder="This is car is owned by... (eg:a company, a particular)" />
                                        <input id="speed" type="text" name="addedvia" placeholder="A Contact phone number just in case..." />
                                 </div> <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
@@ -88,7 +88,7 @@
                                     <h2 class="fs-title">Registration is a success!</h2>
                                     <p>You successfully added the vehicle:</p>
 
-                                </div> <input type="button" name="make_payment" class="next action-button" value="Gift" />
+                                </div> <button name="make_payment" class="next action-button" ><i class="fa fa-gift">Gift</i></button>
                             </fieldset>
                             <fieldset>
                                 <div class="form-card">

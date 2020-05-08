@@ -24,6 +24,9 @@ Route::get('/support', 'HomeController@support');
 Route::get('/setting', 'HomeController@setting');
 
 //ROUTES FOR GETTING DIFFERENTS PRICING PAGES
+    //MIDDLEWARE FOR VERIFYING THE CURRENT PLAN AVAILABILITY FOR THE USER
+        Route::get('/pricing/verification/availability','HomeController@verifyEligibility');
+    //END
 Route::get('/pricing/trial/add-vehicle', 'HomeController@addvehicletrial');
 Route::get('/pricing/std/add-vehicle', 'HomeController@addvehicle');
 Route::get('/pricing/premium/add-vehicle', 'HomeController@addvehiclepremium');
@@ -41,3 +44,10 @@ Route::post('/newsletter','NewsletterController@store');
 Route::get('/home/transactions', 'OthersController@transactions');
 Route::get('/home/notifications', 'OthersController@notifications');
 Route::get('/home/history', 'OthersController@history');
+
+//PDF CONTROLLERS PAGES
+Route::get('/tracking-history','pdfController@exportHistory');
+
+
+//SUPPORT CONVERSATION WITH CUSTOMERS
+Route::post('/support/sending-message','OthersController@postMessage');

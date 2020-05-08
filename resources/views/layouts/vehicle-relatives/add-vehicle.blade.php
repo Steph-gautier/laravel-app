@@ -26,45 +26,82 @@
                 <p>Fill this form it is almost finished :)</p>
                 <div class="row">
                     <div class="col-md-12 mx-0">
-                        <form id="msform">
+                    <form id="msform" novalidate="">
                             <!-- progressbar -->
                             <ul id="progressbar">
                                 <li class="active" id="account"><strong>Vehicle Parameters</strong></li>
                                 <li id="personal"><strong>Device Parameters</strong></li>
-                                <li id="payment"><strong>Payment Transaction</strong></li>
                                 <li id="confirm"><strong>Finish</strong></li>
+                                <li id="gift"><strong>Claim your Gift</strong></li>
                             </ul> <!-- fieldsets -->
                             <fieldset>
                                 <div class="form-card">
-                                    <h2 class="fs-title">Vehicle Information</h2><br/> <input type="text" name="brand" placeholder="Brand name of the vehicle. e.g Toyota, Renault, Suziki,..." /> <input type="text" name="uname" placeholder="Version or model of your vehicle. e.g: Toyota Avensis 2002" /> <input type="text" name="matriculatNbr" placeholder="Enter your matriculation number." /> <input type="text" name="color" placeholder="Which color your vehicle have?" />
-                                </div> <input type="button" name="next" class="next action-button btn btn-primary" value="Next Step" />
-                            </fieldset>
-                            <fieldset>
-                                <div class="form-card">
-                                    <h2 class="fs-title">Device Information</h2><span>Take your device and fill all the corresponding fields here...<br/></span> <input type="text" name="fname" placeholder="Device ID: (Notice: read behind your device)" /> <input type="text" name="pricing" value="STANDARD" /> <input type="text" name="phno" placeholder="This is car is owned by... (eg:a company, a particular)" /> <input type="text" name="phno_2" placeholder="A Contact phone number just in case..." />
-                                </div> <input type="button" name="previous" class="previous action-button-previous" value="Previous" /> <input type="button" name="next" class="next action-button" value="Next Step" />
-                            </fieldset>
-                            <fieldset>
-                                <div class="form-card">
-                                    <h2 class="fs-title">Payment Method</h2>
-                                    <div class="radio-group">
-                                       <div class='radio' data-value="mtn"><img src="{{ url('img/mtn.jpg')}}" width="100px" height="100px" style="border-radius: 10px;"></div>
-                                        <div class='radio' data-value="orange"><img src="{{ url('img/orang.png')}}" width="100px" height="100px" style="border-radius: 10px;"></div>
+                                    <h2 class="fs-title">Vehicle Information</h2><br/>
+                                    {{ csrf_field()}} 
+                                    <div class="form-group">  
+                                        <input id="brandname" required class="form-control @error('brandname') is-invalid @enderror" type="text" name="brandname" placeholder="Brand name of the vehicle. e.g Toyota, Renault, Suziki,..." value="{{ old('brandname') }}"/>
+                                        @error('brandname')
+                                            <div class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </div>
+                                        @enderror
                                     </div>
-                                </div> <input type="button" name="previous" class="previous action-button-previous" value="Previous" /> <input type="button" name="make_payment" class="next action-button" value="Confirm" />
+                                    <div class="form-group">  
+                                        <input id="version" required class="form-control @error('version') is-invalid @enderror" type="text" name="version" placeholder="Version or model of your vehicle. e.g: Toyota Avensis 2002" value="{{ old('version') }}"/>
+                                        @error('version')
+                                            <div class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </div>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">  
+                                        <input id="matriculationNbr" required class="form-control @error('matriculationNbr') is-invalid @enderror" type="text" name="matriculationNbr" placeholder="Enter your matriculation number." value="{{ old('matriculationNbr') }}"/>
+                                        @error('matriculationNbr')
+                                            <div class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </div>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">    
+                                        <input id="color" required class="form-control @error('color') is-invalid @enderror" type="text" name="color" placeholder="Which color your vehicle have?" value="{{ old('color') }}"/>
+                                        @error('color')
+                                            <div class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </div>
+                                        @enderror
+                                    </div>
+                                </div> <input type="button" name="next" class="next action-button btn btn-primary" id="add-trial" value="Next Step" />
                             </fieldset>
                             <fieldset>
                                 <div class="form-card">
-                                    <h2 class="fs-title text-center">Success !</h2> <br><br>
+                                    <h2 class="fs-title">Device Information</h2><span>Take your device and fill all the corresponding fields here...<br/></span> 
+                                    <input id="deviceID" type="text" name="deviceId" placeholder="Device ID: (Notice: read behind your device)" />
+                                     <input id="subscribedPlan" type="text" name="subscribedPlan" value="STANDARD" />
+                                      <input id="owner" type="text" name="owner" placeholder="This is car is owned by... (eg:a company, a particular)" />
+                                       <input id="speed" type="text" name="addedvia" placeholder="A Contact phone number just in case..." />
+                                </div> <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
+                                    <input type="button" name="next" id="validate_device" class="next action-button" value="Next Step" />
+                            </fieldset>
+                            <fieldset>
+                                <div class="form-card">
+                                    <h2 class="fs-title">Registration is a success!</h2>
+                                    <p>You successfully added the vehicle:</p>
+
+                                </div> <button name="make_payment" class="next action-button" ><i class="fa fa-gift">Gift</i></button>
+                            </fieldset>
+                            <fieldset>
+                                <div class="form-card">
+                                    <h2 class="fs-title text-center">Invite Your Friends!</h2> <br><br>
                                     <div class="row justify-content-center">
-                                        <div class="col-3"> <img src="https://img.icons8.com/color/96/000000/ok--v2.png" class="fit-image"> </div>
-                                    </div> <br><br>
+                                        <div class="col-3"></div>
+                                    </div>
                                     <div class="row justify-content-center">
-                                        <div class="col-7 text-center">
-                                            <h5>You Have Successfully Signed Up</h5>
+                                        <div class="text-center">
+                                            <p>Invite a friend and claim <b >+1</b> hour bonus per friend:</p>
+                                        </div><br/>
+                                        <input type="email" name="invite" placeholder="Enter The Email address of your friend"/><button class="btn btn-outline-primary">Invite Now!</button>
                                         </div>
                                     </div>
-                                </div>
                             </fieldset>
                         </form>
                     </div>
@@ -75,5 +112,56 @@
 </div>
         @include('layouts.components.footer-scripts')
         <script src="{{ url('/js/vehicle-registration.js') }}"></script>
+        <script>
+        jQuery(document).ready(function(){
+            //VALIDATE FIRST STEP
+            jQuery('#add-trial').click(function(e){
+                e.preventDefault();
+                $.ajaxSetup({
+                    headers: {
+                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                    }
+                });
+                var token = $("input[name='_token']").val();
+                var current_fs, next_fs, previous_fs; //fieldsets
+                var opacity;
+                $.ajax({
+                    url: "{{ url('/add-trial') }}",
+                    type: 'POST',
+                    data: {
+                        _token:token,
+                        brandname: jQuery('#brandname').val(),
+                        version: jQuery('#version').val(),
+                        matriculationNbr: jQuery('#matriculationNbr').val(),
+                        color: jQuery('#color').val(),
+                    },
+                    success: function(result){
+
+                        }
+                    });
+            });
+            //VALIDATE SECOND STEP
+            jQuery('#validate_device').click(function(e){
+                e.preventDefault();
+                $.ajaxSetup({
+                    headers: {
+                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                    }
+                });
+                var token = $("input[name='_token']").val();
+                $.ajax({
+                    url: "{{ url('/device-infos') }}",
+                    type: 'POST',
+                    data: {
+                        _token:token,
+                        deviceID: jQuery('#deviceID').val(),
+                        speed: jQuery('#speed').val(),
+                    },
+                    success: function(result){
+                    console.log(result);
+                }});
+            });
+        });
+    </script>  
 </body>   
 </html> 
