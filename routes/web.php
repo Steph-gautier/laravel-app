@@ -44,6 +44,7 @@ Route::post('/newsletter','NewsletterController@store');
 Route::get('/home/transactions', 'OthersController@transactions');
 Route::get('/home/notifications', 'OthersController@notifications');
 Route::get('/home/history', 'OthersController@history');
+Route::get('/live-chat/live', 'OthersController@livechat');
 
 //PDF CONTROLLERS PAGES
 Route::get('/tracking-history','pdfController@exportHistory');
@@ -51,6 +52,7 @@ Route::get('/tracking-history','pdfController@exportHistory');
 
 //SUPPORT CONVERSATION WITH CUSTOMERS
 Route::post('/support/sending-message','OthersController@postMessage');
+Route::get('/support/get-message','OthersController@getMessage');
 
 //GETTING ALL PREVIOUS POSITIONS
 Route::get('/home/display/positions', 'HomeController@getPositions');

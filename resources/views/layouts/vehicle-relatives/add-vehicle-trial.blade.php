@@ -27,7 +27,7 @@
                 <div class="alert alert-success" style="display:none"></div>
                 <div class="row">
                     <div class="col-md-12 mx-0">
-                        <form id="msform" novalidate="">
+                        <form id="msform" novalidate="" data-toggle="validator">
                             <!-- progressbar -->
                             <ul id="progressbar">
                                 <li class="active" id="account"><strong>Vehicle Parameters</strong></li>
@@ -71,6 +71,23 @@
                                             </div>
                                         @enderror
                                     </div>
+
+                                    <div class="input-group image-preview">
+                                        <input type="text" class="form-control image-preview-filename" placeholder="Browse, select and upload an image of the car" disabled="disabled" style="width:170px;background-color:transparent;"> <!-- don't give a name === doesn't send on POST/GET -->
+                                        <span class="input-group-btn">
+                                            <!-- image-preview-clear button -->
+                                            <button type="button" class="btn btn-danger image-preview-clear" style="display:none;">
+                                                <span class="fa fa-trash"></span> Clear
+                                            </button>
+                                            <!-- image-preview-input -->
+                                            <div class="btn btn-info image-preview-input" style="border-top-left-radius:0px;border-bottom-left-radius:0px">
+                                                <span class="fa fa-folder-open"></span>
+                                                <span class="image-preview-input-title">Browse</span>
+                                                <input type="file" id="vehicle_image" accept="image/png, image/jpeg" name="input-file-preview"/> <!-- rename it -->
+                                            </div>
+                                        </span>
+                                    </div>
+                                    <div class="alert" id="message" style="display: none"></div>
                                 </div> <input type="button" name="next" class="next action-button btn btn-primary" id="add-trial" value="Next Step" />
                             </fieldset>
                             <fieldset>
@@ -111,6 +128,7 @@
         </div>
     </div>
 </div>
+        <script src="{{ url('/js/popper.js') }}" ></script>
         @include('layouts.components.footer-scripts')
         <script src="{{ url('/js/vehicle-registration.js') }}"></script>
         <script>
@@ -124,20 +142,24 @@
                     }
                 });
                 var token = $("input[name='_token']").val();
-                var current_fs, next_fs, previous_fs; //fieldsets
-                var opacity;
                 $.ajax({
                     url: "{{ url('/add-trial') }}",
                     type: 'POST',
+                    dataType:'JSON',
+                    contentType: false,
+                    cache: false,
+                    processData: false,
                     data: {
                         _token:token,
                         brandname: jQuery('#brandname').val(),
                         version: jQuery('#version').val(),
                         matriculationNbr: jQuery('#matriculationNbr').val(),
                         color: jQuery('#color').val(),
+                        vehicle_image: jQuery('#vehicle_image').val(),
                     },
-                    success: function(result){
-
+                    success: function(data){
+                        $('#message').css('display', 'block');
+                        $('#message').html(data.message);
                         }
                     });
             });

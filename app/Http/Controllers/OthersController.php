@@ -33,4 +33,12 @@ class OthersController extends Controller
             'message' => $data['message'],
         ]);
     }
+    //Getting message
+    public function getMessage(){
+        // Fetch all records
+        $allMessage['data'] = Message::getAllMessage();
+    
+        echo json_encode($allMessage);
+        exit;
+      }
 }

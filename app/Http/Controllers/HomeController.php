@@ -54,7 +54,7 @@ class HomeController extends Controller
     //verifiying pricing eligibility
     public function verifyEligibility(){
         $remaining_time = 2000;
-        $current_plan ="standard";
+        $current_plan ="free";
         if ($remaining_time == 0){
             return view('pricing');
         }

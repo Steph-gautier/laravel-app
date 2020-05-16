@@ -15,14 +15,14 @@ class VehicleController extends Controller
             'version' => 'required|string|max:255',
             'matriculationNbr' => 'required|string|min:8|max:255|unique:vehicles',
             'color' => 'required|string|max:255',
-            /*'deviceId' => 'required|integer|min:12|max:255|unique:vehicles',
-            'subcribedPlan' => 'required|string|max:255',
-            'addedvia' => 'required|string|min:8|confirmed',*/
+            'vehicle_image' => 'required|image|mimes:jpeg,png,jpg|max:2048'
         ]);
-        
+        $imageName = time().'.'.request()->vehicle_image->getClientOriginalExtension();
+        request()->image->move(public_path('images'), $imageName);
         $data = $request->all();
         $check = $this->create($data);
-        //return Redirect::to("pricing")->withSuccess('Vehicle added!');
+        
+        return back()->with('success','You have successfully upload image.')->with('image',$imageName);
     }
     public function create(array $data){
         return Vehicle::create([
@@ -31,9 +31,6 @@ class VehicleController extends Controller
             'version' => $data['version'],
             'matriculationNbr' => $data['matriculationNbr'],
             'color' => $data['color'],
-            /*'deviceId' => $data['deviceId'],
-            'subcribedPlan' => $data['subscribedPlan'],
-            'addedvia' => $data['addedvia'],*/
         ]);
     }
 }

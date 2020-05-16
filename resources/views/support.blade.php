@@ -35,11 +35,29 @@
             $(document).ready(function(){
                 $('#navbarSupportedContent ul li').removeClass("active");
                 $("#more").addClass('active');
+                
             });
         </script>
         <script>
             jQuery(document).ready(function(){
-            //VALIDATE FIRST STEP
+            $.ajax({
+                    url: "{{ url('/support/get-message') }}",
+                    type: 'GET',
+                    dataType:'JSON',
+                    success: function(response){
+                        all_datas = response['data'];
+                        all_messages = all_datas.map(v => ({ msg: v.message}));
+                        for (var i=0; i<all_messages.length + 1; i++){
+                            $("#chat_converse").append("<span class='chat_msg_item chat_msg_item_user'>" + all_messages[i].msg + "</span><span class='status'>20m ago</span>");
+                        }
+                    }
+            });
+
+            $("#chatSend").keyup(function(event){
+                if(event.keyCode == 13){
+                    $("#fabv1_send").click();
+                }
+            });
             jQuery('#fabv1_send').click(function(e){
                 e.preventDefault();
                 $.ajaxSetup({
@@ -56,12 +74,26 @@
                         user_id: $('#user_id').val(),
                         message: jQuery('#chatSend').val(),
                     },
-                    success: function(result){
-                            
-                        }
+                    success: function(data){
+                        $('#chatSend').val('');
+                        setTimeout(function() {
+                            $.ajax({
+                                url: "{{ url('/support/get-message') }}",
+                                type: 'GET',
+                                dataType:'JSON',
+                                success: function(response){
+                                    all_data = response['data'];
+                                    all_message = all_data.map(v => ({ message: v.message}));
+                                    last_entry = all_message.length - 1;
+                                    $('#chat_converse').append("<span class='chat_msg_item chat_msg_item_user'>" + all_message[last_entry].message + "</span><span class='status'>20m ago</span>");
+                                    }
                     });
+                        }, 1000);
+                    }
+                });
             });
         });
+
         </script>
     </body>
 </html>

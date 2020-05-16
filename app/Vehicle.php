@@ -8,6 +8,6 @@ class Vehicle extends Model
 {
     public $table = 'vehicles'; 
     protected $fillable = [
-        'brandname', 'version', 'matriculationNbr','color'
+        'brandname', 'version', 'matriculationNbr','color','vehicle_image'
     ];
 }

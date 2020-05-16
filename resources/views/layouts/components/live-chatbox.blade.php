@@ -19,10 +19,10 @@
       <span class="chat_msg_item chat_msg_item_admin">
             <div class="chat_avatar">
                <img src="{{ url('img/user.jpg')}}"/>
-            </div>Hey there! Any question?</span>
-      <span class="chat_msg_item chat_msg_item_user">
-            Hello!</span>
-            <span class="status">20m ago</span>
+            </div>
+            Hey there! Any question?
+        </span>
+        
     </div>
     
     <div class="fabv1_field">

@@ -5,9 +5,9 @@
    }
 
    .menu-toggler {
-    position: fixed;
+    position: absolute;
     display: block;
-    top: -21rem;
+    top: -11rem;
     bottom: 0;
     right: 8rem;
     margin:auto;
@@ -20,7 +20,7 @@
   .fake-toggler {
     position: absolute;
     display: block;
-    top: -21rem;
+    top: -11rem;
     bottom: 0;
     right: 7.5rem;
     margin:auto;
@@ -84,7 +84,7 @@
     transition: transform 0.5s top 0.5s;
     position: absolute;
     display: block;
-    top: -21rem;
+    top: -11rem;
     bottom: 0;
     right: 8rem;
     margin: auto;
@@ -130,7 +130,7 @@
   .menu-item {
     position: absolute;
     display: block;
-    top: -21rem;
+    top: -11rem;
     bottom: 0;
     right: 8rem;
     margin: auto;

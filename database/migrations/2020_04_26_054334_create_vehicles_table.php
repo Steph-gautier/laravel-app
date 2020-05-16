@@ -19,6 +19,7 @@ class CreateVehiclesTable extends Migration
             $table->string('version');
             $table->string('matriculationNbr')->unique;
             $table->string('color');
+            $table->string('vehicle_image');
             /*$table->integer('deviceId')->unique;
             $table->string('lastposition');
             $table->string('subcribedPlan');

@@ -17,27 +17,28 @@
     @include('layouts.components.sidebar')
   <main class="page-content">
     @include('layouts.components.map') 
-    
   </main>  
 
     @include('auth.footer-newsletter')      
     @include('layouts.components.footer-scripts-home')
     <script>
     $(document).ready(function(){
+                $('.toast').toast('hide');
                 $('#navbarSupportedContent ul li').removeClass("active");
                 $("#dashboard").addClass('active');
+                $(".page-wrapper").removeClass("toggled");
                 $('.option-btne').click(function(){
                     $(this).toggleClass('open');
                     $('.control-centere').toggleClass('open');
             });
-
             });
+
     </script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBimtX2LxnwbpowGkJhFGAtkVTsYAdNcsM&callback=initMap&libraries=drawing,geometry"></script>
     <script>
     //Display map and many other characteristics
 
-    var marker, infoWindow;
+    var current_marker, start_marker, infoWindow, all_coordinates;
     function initMap() {
       //Fetch all previous position of a given car using ajax.
                 $.ajaxSetup({
@@ -51,8 +52,7 @@
                     dataType:'JSON',
                     success: function(response){
                             var all_positions = response['data'];
-                            var all_coordinates = all_positions.map(v => ({ lat: parseFloat(v.latitude), lng: parseFloat(v.longitude) }));
-                            console.log(all_coordinates);
+                            all_coordinates = all_positions.map(v => ({ lat: parseFloat(v.latitude), lng: parseFloat(v.longitude) }));
                             var historyPath = new google.maps.Polyline({
                                 path: all_coordinates,
                                 strokeColor: '#563d7c',
@@ -61,12 +61,25 @@
                                 fillColor: '#563d7c',
                                 fillOpacity: 0.35
                               });
-                              var startMarker = new google.maps.Marker({
+                              start_marker = new google.maps.Marker({
                                 position:historyPath.getPath().getAt(0), 
                                 map:map,
-
+                                icon: starting_flag,
                               });
-                              var current_marker = new google.maps.Marker({
+                              var contentString = '<div class="info-window">' +
+                                '<div class="text-center"><h3>Starting point</h3></div>' +
+                                '<div class="info-content">' +
+                                '<p>This is where your car started to move</p>' +
+                                '</div>' +
+                                '</div>';
+                              var modal_start_marker = new google.maps.InfoWindow({
+                                  content: contentString,
+                                  maxWidth: 400
+                              });
+                              start_marker.addListener('click', function () {
+                                  modal_start_marker.open(map, start_marker);
+                              });
+                              current_marker = new google.maps.Marker({
                                 position: historyPath.getPath().getAt(historyPath.getPath().getLength()-1),
                                 map: map,
                                 title: 'This is the vehicle',
@@ -95,49 +108,51 @@
               });
       
        var image ="{{ url('/img/mapmarker2.png')}}";
-        
-       var drawingManager = new google.maps.drawing.DrawingManager({
-          drawingMode: google.maps.drawing.OverlayType.MARKER,
-          drawingControl: true,
-          drawingControlOptions: {
-            position: google.maps.ControlPosition.BOTTOM_CENTER,
-            drawingModes: ['polyline','rectangle','circle', 'polygon']
-          },
-          markerOptions: {icon: image},
-          circleOptions: {
-            fillColor: '#563d7c',
-            fillOpacity: 0.5,
-            strokeWeight: 1,
-            clickable: false,
-            editable: true,
-            zIndex: 1
-          },
-          polylineOptions: {
-            fillColor: '#563d7c',
-            fillOpacity: 0.5,
-            strokeWeight: 2,
-            clickable: false,
-            editable: true,
-            zIndex: 1
-          },
-          rectangleOptions: {
-            fillColor: '#563d7c',
-            fillOpacity: 0.5,
-            strokeWeight: 1,
-            clickable: false,
-            editable: true,
-            zIndex: 1
-          },
-          polygonOptions: {
-            fillColor: '#563d7c',
-            fillOpacity: 0.5,
-            strokeWeight: 1,
-            clickable: false,
-            editable: true,
-            zIndex: 1
-          }
-        });
-        drawingManager.setMap(null);
+       var starting_flag = "{{ url('/img/starting-flag.png')}}";
+
+       //FUNCTIONS FOR DRAWING ON THE MAP
+       var drawing_cricle_isClicked = false;
+            var vehicle_isSelected = null;
+                $('#draw_circle').click(function(){
+                  drawing_circle_isClicked = true;
+                    $('.toast').toast('show');
+                    if(drawing_circle_isClicked == true){
+                      google.maps.event.addListener(current_marker, "click", function () {
+                        drawCircle();
+                        });
+                    }
+                });
+                function drawCircle() {
+
+                  var radius = 20000;
+
+                  var circle = new google.maps.Circle({
+                      strokeColor: '#28a745',
+                      strokeOpacity: 1.0,
+                      strokeWeight: 1,
+                      fillColor: '#28a745',//Success color for the moment
+                      fillOpacity: 0.2,
+                      map: map,
+                      center: all_coordinates[all_coordinates.length-1],
+                      radius: radius,
+                      editable: true
+                  });
+                }
+
+                function drawPolygon() {
+
+                  var polygon = new google.maps.Polygon({
+                      strokeColor: '#28a745',
+                      strokeOpacity: 1.0,
+                      strokeWeight: 1,
+                      fillColor: '#28a745',//Success color for the moment
+                      fillOpacity: 0.2,
+                      map: map,
+                      center: all_coordinates[all_coordinates.length-1],
+                      radius: radius,
+                      editable: true
+                  });
+                }
         $('#geolocate').click(function (){
           infoWindow = new google.maps.InfoWindow;
         // Try HTML5 geolocation.
@@ -162,6 +177,7 @@
         });
     }
 
+    
       function handleLocationError(browserHasGeolocation, infoWindow, pos) {
         infoWindow.setPosition(pos);
         infoWindow.setContent(browserHasGeolocation ?
