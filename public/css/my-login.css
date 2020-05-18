@@ -3,10 +3,12 @@ html,body {
 }
 body{
 	overflow-x: hidden;
+	background-image:url(/img/wall1.jpg);
+	background-attachment: local;
 }
 
 .my-login-page .brand {
-	background-color: white;
+	background-color: #453066;
 	width: 110px;
 	height: 110px;
 	overflow: hidden;
@@ -18,8 +20,8 @@ body{
 	top:4em;
 }
 .logo{
-	height: 75%;
-	padding-top:7%
+	margin:15%;
+	transform: rotate(12deg);
 }
 .my-login-page .brand img {
 	width: 100%;
@@ -31,7 +33,7 @@ body{
 
 .my-login-page .card {
 	border-color: transparent;
-	box-shadow: 0 4px 8px rgba(0,0,0,.05);
+	box-shadow:  2px 8px rgba(39, 38, 38, 0.26);
 }
 
 .my-login-page .card.fat {
@@ -87,7 +89,7 @@ body{
 	display: block;
 	height: 100%;
   }
-.upper{
+.uppere{
 	z-index:3;
 	position: absolute;
 }
@@ -100,4 +102,89 @@ body{
 }
 .white{
 	color:white;
+}
+.arrow{
+	min-height: 43rem;
+}
+.upper{
+	z-index:3;
+	position: absolute;
+	background-color:#453066;
+	width: 100%;
+	height: 21.5rem;
+	transform: skewX(40deg);
+}
+.under{
+	background-color:#453066;
+	width: 100%;
+	height: 21.5rem;
+	transform: skewX(-40deg);
+	margin-top: 21.5rem;
+}
+.welcomeView{
+	position: relative;
+	color:white;
+	z-index: 80;
+	width: 100%;
+}
+.we-header{
+	position: absolute;
+	top:-42rem;
+	left:3.5rem;
+}
+.we-sm-img{
+	position:absolute;
+	top:-40rem;
+}
+.we-body{
+	position: absolute;
+	top:-27rem;
+	left:10.9rem;
+}
+.we-carousel{
+	position: absolute;
+	top:-18rem;
+	left:4.9rem;
+	width: 100%;
+}
+.we-footer{
+	position: absolute;
+	top:-5rem;
+	left:2.5rem;
+}
+#we-logo{
+	position: relative;
+	top:-7.6rem;
+	left:16rem;
+}
+.carousel{
+    margin-top: -50px;
+  }
+  .carousel-inner{
+    height: 100px;
+  }
+  .carousel-caption{
+    color: #fff;
+    top: 50%;
+  }
+  .all-content-wrapper {
+    margin-left: 240px;
+    transition: all 0.3s;
+}
+.carousel-indicators{
+	position: absolute;
+	bottom:-4rem;
+}
+.we-icx{
+	font-weight: 700;
+	color:white;
+	font-size:20px;
+	margin-left: 5px;
+	margin-right:5px;
+}
+.tw{
+	color:dodgerblue;
+}
+.in{
+	color: rgb(221, 96, 12);
 }
