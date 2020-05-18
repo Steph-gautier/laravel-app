@@ -56,3 +56,6 @@ Route::get('/support/get-message','OthersController@getMessage');
 
 //GETTING ALL PREVIOUS POSITIONS
 Route::get('/home/display/positions', 'HomeController@getPositions');
+
+//ALL YOU NEED FOR SENDING COMMANDS TO YOUR VEHICLES
+Route::get('/commands/lock', 'CommandsController@lockVehicle');

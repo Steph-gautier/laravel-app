@@ -90,7 +90,7 @@
                                               }
                     });
         // The location of Africa
-        var africa = {lat: 7.36, lng: 12.34};
+        var africa = {lat: 4.15, lng: 9.24};
         var map = new google.maps.Map(
             document.getElementById('map'),
              {
@@ -111,22 +111,40 @@
        var starting_flag = "{{ url('/img/starting-flag.png')}}";
 
        //FUNCTIONS FOR DRAWING ON THE MAP
-       var drawing_cricle_isClicked = false;
-            var vehicle_isSelected = null;
+       var drawing_circle_isClicked = false;
                 $('#draw_circle').click(function(){
                   drawing_circle_isClicked = true;
                     $('.toast').toast('show');
-                    if(drawing_circle_isClicked == true){
+                    if(drawing_circle_isClicked == true && typeof(polygon) === 'undefined'){
                       google.maps.event.addListener(current_marker, "click", function () {
-                        drawCircle();
+                          drawCircle();
+                      });
+                    }
+                      else{
+                          alert("A polygon area restriction have already been set by you. Do you want to change?");
+                        }
+                      });
+
+        var drawing_polygon_isClicked = false;
+                $('#draw_polygon').click(function(){
+                  drawing_polygon_isClicked = true;
+                    $('.toast').toast('show');
+                    if(drawing_polygon_isClicked == true && typeof(circle) === 'undefined'){
+                      google.maps.event.addListener(current_marker, "click", function () {
+                          drawPolygon();
                         });
                     }
-                });
+                    else{
+                          alert("A circle area restriction have already been set by you. Do you want to change?");
+                    }
+                  });
+                  
+        var circle, polygon;
                 function drawCircle() {
 
                   var radius = 20000;
 
-                  var circle = new google.maps.Circle({
+                  circle = new google.maps.Circle({
                       strokeColor: '#28a745',
                       strokeOpacity: 1.0,
                       strokeWeight: 1,
@@ -138,18 +156,22 @@
                       editable: true
                   });
                 }
-
+                
                 function drawPolygon() {
-
-                  var polygon = new google.maps.Polygon({
+                  var rectangle_coordinate = [
+                    {lat: all_coordinates[all_coordinates.length - 1].lat + 0.05, lng: all_coordinates[all_coordinates.length - 1].lng + 0.05},
+                    {lat: all_coordinates[all_coordinates.length - 1].lat - 0.05, lng: all_coordinates[all_coordinates.length - 1].lng + 0.05},
+                    {lat: all_coordinates[all_coordinates.length - 1].lat - 0.05, lng: all_coordinates[all_coordinates.length - 1].lng - 0.05},
+                    {lat: all_coordinates[all_coordinates.length - 1].lat + 0.05, lng: all_coordinates[all_coordinates.length - 1].lng - 0.05},
+                  ];
+                  polygon = new google.maps.Polygon({
                       strokeColor: '#28a745',
                       strokeOpacity: 1.0,
                       strokeWeight: 1,
                       fillColor: '#28a745',//Success color for the moment
                       fillOpacity: 0.2,
                       map: map,
-                      center: all_coordinates[all_coordinates.length-1],
-                      radius: radius,
+                      paths: rectangle_coordinate,
                       editable: true
                   });
                 }
@@ -218,6 +240,30 @@
         // Returns the element to be compliant with the appendChild API
         return element;
         };
-       </script> 
+       </script>
+       <script>
+        //PART FOR SENDING COMMANDS TO THE DATABASE
+            //LOCK COMMAND
+        $('#lock_btn').click(function(e){
+                e.preventDefault();
+                $.ajaxSetup({
+                    headers: {
+                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                    }
+                });
+                var token = $("input[name='_token']").val();
+                $.ajax({
+                    url: "{{ url('/commands/lock') }}",
+                    type: 'POST',
+                    data: {
+                        _token:token,
+                        device_id: jQuery('#device_id'),
+                        command: jQuery('#lock_command').val(),
+                    },
+                    success: function(result){
+                    console.log(result);
+                }});
+            });
+       </script>
     </body>
 </html>

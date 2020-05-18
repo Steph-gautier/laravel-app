@@ -279,8 +279,10 @@
     border-top-left-radius: 75%;
   }
 
+  #shape_drawing{
+  }
   .control-centere{
-    position: fixed;;
+    position: fixed;
     display: flex;
     align-items: center;
     justify-content: center;
