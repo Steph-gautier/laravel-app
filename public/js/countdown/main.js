@@ -13,10 +13,4 @@ document.addEventListener('DOMContentLoaded', () => {
     .ifEnded(() => {
       console.log('The countdown has ended!');
     });
-
-
-
-  // Show version number
-  var ver = document.getElementById('ver');
-  ver.innerHTML = flipdown.version;
 });

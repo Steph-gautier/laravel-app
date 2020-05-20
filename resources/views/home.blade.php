@@ -132,7 +132,10 @@
                     if(drawing_polygon_isClicked == true && typeof(circle) === 'undefined'){
                       google.maps.event.addListener(current_marker, "click", function () {
                           drawPolygon();
+                          $('#area_field').val(google.maps.geometry.spherical.computeArea(polygon.getPath()));
                         });
+                        
+        
                     }
                     else{
                           alert("A circle area restriction have already been set by you. Do you want to change?");
