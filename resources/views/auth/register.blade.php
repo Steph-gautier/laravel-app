@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="{{ url('/css/bootstrap.css') }}">
         <link rel="stylesheet" href="{{ url('/css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ url('/css/custom.css') }}">
-        <link rel="stylesheet" href="{{ url('/css/my-login.css') }}">
+        <link rel="stylesheet" href="{{ url('/css/login.css') }}">
 
     </head>
 <body class="body">
