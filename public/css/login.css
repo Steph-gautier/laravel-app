@@ -3,6 +3,8 @@ html,body {
 }
 body{
 	overflow-x: hidden;
+}
+.bg-body{
 	background-image:url(/img/wall1.jpg);
 	background-attachment: local;
 }
@@ -187,4 +189,23 @@ body{
 }
 .in{
 	color: rgb(221, 96, 12);
+}
+#login-btn-login{
+	visibility: hidden;
+}
+.phone-view{
+	color:white;
+	border: 1px solid white;
+	position: relative;
+    top: 28px;
+}
+
+@media screen and (min-width:200px) and (max-width: 360px) {
+	.body{
+		max-height: 100%;
+		width: 100%;
+	}
+	#login-btn-login{
+		visibility: visible;
+	}
 }

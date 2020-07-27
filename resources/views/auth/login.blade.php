@@ -10,11 +10,11 @@
         @include('layouts.components.header')
 
     </head>
-<body class="body">
+<body class="body bg-body">
 
 
 <div class="row" style="z-index:30;position:relative">
-            <div class="col-lg-5">
+            <div class="col-lg-5 col-xs-12">
                 <div class="row arrow">
                     <div class="col-lg-12 upper"></div>
                     <div class="col-lg-12 under"></div>
@@ -76,6 +76,8 @@
                                 <li data-target="#carouselExampleCaptions" data-slide-to="3"></li>
                             </ol>  
                             </div>
+                            <br/><br/>
+                    <a  href="#login-form1" id="login-btn-login" class="btn phone-view"><h4>Sign In</h4></a>
                     </div>
                     <div class="we-footer">
                         <h6>Get our mobile app on:</h6>
@@ -83,7 +85,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6  offset-1">
+            <div id="login-form" class="col-lg-6 col-xs-12 offset-1">
                 <div class="my-login-page">
                 <section class="h-100">
                     <div class="container h-100">
@@ -95,7 +97,7 @@
                                 <div class="card fat">
                                     <div class="card-body">
                                         <h4 class="card-title">Login</h4>
-                                        <form action="{{route('login')}}" method="POST" class="my-login-validation" novalidate="">
+                                        <form id="login-form1" action="{{route('login')}}" method="POST" class="my-login-validation" novalidate="">
                                         {{ csrf_field()}}
                                             <div class="form-group">
                                                 <label for="email">E-Mail Address</label>

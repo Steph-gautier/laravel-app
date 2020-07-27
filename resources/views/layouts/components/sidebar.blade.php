@@ -1,4 +1,4 @@
-<div class="page-wrapper chiller-theme toggled">
+<div id="sidebar-global" class="page-wrapper chiller-theme toggled">
   <a id="show-sidebar" class="btn btn-sm btn-primary" href="#">
     <i class="fas fa-bars"></i>
   </a>

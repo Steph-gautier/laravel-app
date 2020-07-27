@@ -40,6 +40,14 @@
   transition: all 400ms ease;
 }
 
+@media screen and (max-width: 360px) {
+  .stage{
+    position: absolute;
+    top:48%;
+    left: 55%;
+    width: 90%;
+  }
+}
 @media screen and (max-width: 600px) {
     .stage {
         max-width: 100%;

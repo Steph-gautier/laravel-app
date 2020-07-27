@@ -1,18 +1,5 @@
 
             <div id="map"></div>
-            <div class="toast" style="position: absolute; top: 60%; right: 0; z-index:1000" role="alert" data-autohide="false"  aria-live="assertive" aria-atomic="true">
-                <div class="toast-header">
-                    <img src="{{ url('img/network.png')}}" style="width:14px"/>
-                    <strong class="mr-auto">WE-CameroonGPS</strong>
-                    <small>11 mins ago</small>
-                    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="toast-body">
-                    Please select a vehicle and start drawing
-                </div>
-            </div>
             <div class="">
                 <nav class="menu">
                         <input class="menu-toggler" type="checkbox">
@@ -54,7 +41,6 @@
                     <li class="history"><i class="fa fa-backward"></i></li>
                 </ul>
             </div>
-
             <div id="shape_drawing" class="row drawing-properties">
                 <div class="col-lg-4 offset-4 card">
                     <div class="card-body text-center">
@@ -64,7 +50,14 @@
                                 <span class="btn btn-secondary input-group-text"><i class="fa fa-adjust"></i></span>
                             </div>
                             <input type="text" id="area_field" class="form-control" placeholder="Area" aria-label="Area" aria-describedby="basic-addon1">
+                            <div class="input-group-append">
+                                <span class="btn btn-secondary input-group-text"><b>m<sup>2</sup></b></span>
                             </div>
+                            </div>
+                            <div class="row">
+                            <button class="btn btn-secondary">Cancel Operation</button>
+                            <button class="btn btn-primary">Confirm Restriction</button>
+                            <div>
                         </div>
                 </div>
             </div>

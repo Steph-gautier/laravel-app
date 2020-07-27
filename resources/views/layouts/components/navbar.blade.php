@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-mainbg bg-primary nav-style fixed-top">
+<nav id="navbar" class="navbar navbar-expand-lg navbar-mainbg bg-primary nav-style fixed-top">
         <a href="/home" class="brandName" style="margin-left:3%">Cameroon GPS <sup><img src="{{ url('img/network.png')}}" style="width:20px"/></sup></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <i class="fas fa-bars text-white"></i>

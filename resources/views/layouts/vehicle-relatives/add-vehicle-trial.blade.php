@@ -11,7 +11,7 @@
  
         </style>
     </head>
-    <body>
+    <body class="background-register-car">
     <div class="wave-container" style="position:absolute;z-index:0">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
             <path fill="#4a346b" fill-opacity="1" d="M0,192L21.8,181.3C43.6,171,87,149,131,144C174.5,139,218,149,262,133.3C305.5,117,349,75,393,90.7C436.4,107,480,181,524,197.3C567.3,213,611,171,655,144C698.2,117,742,107,785,138.7C829.1,171,873,245,916,266.7C960,288,1004,256,1047,234.7C1090.9,213,1135,203,1178,197.3C1221.8,192,1265,192,1309,202.7C1352.7,213,1396,235,1418,245.3L1440,256L1440,0L1418.2,0C1396.4,0,1353,0,1309,0C1265.5,0,1222,0,1178,0C1134.5,0,1091,0,1047,0C1003.6,0,960,0,916,0C872.7,0,829,0,785,0C741.8,0,698,0,655,0C610.9,0,567,0,524,0C480,0,436,0,393,0C349.1,0,305,0,262,0C218.2,0,175,0,131,0C87.3,0,44,0,22,0L0,0Z"></path>
@@ -27,7 +27,7 @@
                 <div class="alert alert-success" style="display:none"></div>
                 <div class="row">
                     <div class="col-md-12 mx-0">
-                        <form id="msform" novalidate="" data-toggle="validator">
+                        <div id="msform" novalidate="" data-toggle="validator">
                             <!-- progressbar -->
                             <ul id="progressbar">
                                 <li class="active" id="account"><strong>Vehicle Parameters</strong></li>
@@ -87,7 +87,6 @@
                                             </div>
                                         </span>
                                     </div>
-                                    <div class="alert" id="message" style="display: none"></div>
                                 </div> <input type="button" name="next" class="next action-button btn btn-primary" id="add-trial" value="Next Step" />
                             </fieldset>
                             <fieldset>
@@ -121,7 +120,7 @@
                                         </div>
                                     </div>
                             </fieldset>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -142,24 +141,26 @@
                     }
                 });
                 var token = $("input[name='_token']").val();
+                var form_data = new FormData();
+                form_data.append("file", document.getElementById('vehicle_image').files[0]);
+                console.log(form_data.get('file'));
                 $.ajax({
                     url: "{{ url('/add-trial') }}",
-                    type: 'POST',
-                    dataType:'JSON',
+                    enctype: 'multipart/form-data',
+                    processData: false,
                     contentType: false,
                     cache: false,
-                    processData: false,
+                    type: 'POST',
                     data: {
-                        _token:token,
+                        "_token": "{{ csrf_token() }}",
                         brandname: jQuery('#brandname').val(),
                         version: jQuery('#version').val(),
                         matriculationNbr: jQuery('#matriculationNbr').val(),
                         color: jQuery('#color').val(),
-                        vehicle_image: jQuery('#vehicle_image').val(),
+                        vehicle_image: form_data.get('file').name,
                     },
                     success: function(data){
-                        $('#message').css('display', 'block');
-                        $('#message').html(data.message);
+                            console.log(data);
                         }
                     });
             });

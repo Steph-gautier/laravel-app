@@ -7,6 +7,7 @@
         <title>GPS-Cameroon</title>
         @include('layouts.components.header-links-home')
         <link rel="stylesheet" href="{{ url('/css/map.css') }}">
+        <link rel="stylesheet" href="{{ url('/css/toast.css') }}">
     </head>    
 
     <body>
@@ -21,6 +22,7 @@
 
     @include('auth.footer-newsletter')      
     @include('layouts.components.footer-scripts-home')
+    <script src="{{ url('/js/toast.js') }}"></script> 
     <script>
     $(document).ready(function(){
                 $('.toast').toast('hide');
@@ -114,10 +116,21 @@
        var drawing_circle_isClicked = false;
                 $('#draw_circle').click(function(){
                   drawing_circle_isClicked = true;
-                    $('.toast').toast('show');
+                    $.toast({
+                      heading:'Notifications <small style="font-size:8px;margin-left:20px">Cameroon GPS<sup><img src="{{ url("img/network.png")}}"style="width:15px"/></sup></small>',
+                      text:'Select the vehicle and start drawing',
+                      showHideTransition : 'fade',  // It can be plain, fade or slide
+                      hideAfter : 5000,
+                      icon:'info',              // `false` to make it sticky or time in miliseconds to hide after
+                      stack : 5,                     // `fakse` to show one stack at a time count showing the number of toasts that can be shown at once
+                      textAlign : 'left',            // Alignment of text i.e. left, right, center
+                      position : 'bottom-center',
+                      loaderBg: '#fff'
+                    });
                     if(drawing_circle_isClicked == true && typeof(polygon) === 'undefined'){
                       google.maps.event.addListener(current_marker, "click", function () {
                           drawCircle();
+                          $('#area_field').val(Math.PI * circle.getRadius()* circle.getRadius());
                       });
                     }
                       else{

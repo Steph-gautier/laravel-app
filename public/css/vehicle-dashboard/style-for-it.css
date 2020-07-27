@@ -162,7 +162,35 @@ height: calc(100% - 160px);
     @media all and (max-height: 332px){
     .onscreen { top: 11px }
     }
-    
+    @media screen and (max-width: 360px) {
+        
+        #gauge-container{
+            background-size: 360px;
+            width:360px;
+        }
+        #rpm{
+            width:80px;
+            height:84px;
+            position: relative;
+            left: 13px;
+            top: 32px;
+        }
+        #kmh{
+            width:100px;
+            height:105px;
+            position: relative;
+            left: -8px;
+            top: 50px;
+        }
+        #fuel{
+            width:55px;
+            height:60px;
+            position: relative;
+            top:-124px;
+            left:54px;
+        }
+    }
+
     /**/
     
     /* Animating the top property in Microsoft Edge does not work so prevent animating it */

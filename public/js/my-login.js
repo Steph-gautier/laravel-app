@@ -3,7 +3,7 @@
 
 $(function() {
 
-	var company = '<div style="position: fixed;bottom: 0;right: 20px;background-color: #fff;box-shadow: 0 4px 8px rgba(0,0,0,.05);border-radius: 3px 3px 0 0;font-size: 12px;padding: 5px 10px;">Powered by &nbsp;&bull;&nbsp; <a href="#"><b>Wardrobe Electronics</b></a></div>';
+	var company = '<div style="position: fixed;bottom: 0;right: 20px;background-color: #fff;box-shadow: 0 4px 8px rgba(0,0,0,.05);border-radius: 3px 3px 0 0;font-size: 12px;padding: 5px 10px; z-index:1000">Powered by &nbsp;&bull;&nbsp; <a href="#"><b>Wardrobe Electronics</b></a></div>';
 	$("body").append(company);
 
 	$("input[type='password'][data-eye]").each(function(i) {

@@ -14,8 +14,8 @@
 
         @include('layouts.components.sidebar')
         <div class="row">
-            <div class="col-lg-5 offset-5">
-                <img src="{{ url('/img/livesupport.png') }}"/>
+            <div class="col-lg-5 col-xs-12">
+                <img class="support-img" src="{{ url('/img/livesupport.png') }}"/>
             </div>
         </div>
      <div class="fabsv1">

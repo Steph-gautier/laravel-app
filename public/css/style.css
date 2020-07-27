@@ -372,3 +372,74 @@ footer{
     font-size:11px;
     text-align: center;
 }
+
+/*RESPONSIVENESS OF THE APP*/
+@media screen and (max-width: 360px) {
+    body {
+        width:100%;
+    }
+    #navbar{
+        width:100%;
+    }
+    #sidebar{
+        height: 100%;
+    }
+    #shape_drawing{
+        visibility: hidden;
+    }
+    .footer-all{
+        background-color: #563d7c;
+        height: 700px;
+    }
+    #footer-svg{
+        width:100%;
+        height: 100px;
+    }
+    .states{
+        visibility:visible;
+        margin-top:220%;
+    }
+    .support-img{
+        width:340px;
+    }
+}
+@media screen and (max-width: 720px) and (min-width:361px) {
+    body {
+        width:100%;
+    }
+    #navbar{
+        width:100%;
+    }
+    #sidebar{
+        height: 100%;
+    }
+    #shape_drawing{
+        visibility: hidden;
+    }
+    .footer-all{
+        background-color: #563d7c;
+        height: 1100px;
+    }
+    #footer-svg{
+        width:100%;
+        height: 100px;
+    }
+}
+
+@media screen and (max-width: 992px) and (min-width:721px) {
+    body {
+        width:100%;
+    }
+    #navbar{
+        width:100%;
+    }
+    #sidebar{
+        height: 100%;
+    }
+    #shape_drawing{
+        visibility: hidden;
+    }
+    .footer-core{
+        padding-top:8%;
+    }
+}

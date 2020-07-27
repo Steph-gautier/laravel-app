@@ -1,4 +1,6 @@
-
+.background-register-car{
+    background-image: none                            ;
+}
 #msform {
     text-align: center;
     position: relative;

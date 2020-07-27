@@ -3,15 +3,53 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>GPS-Cameroon</title>
         @include('layouts.components.header-links-home')
         <link rel="stylesheet" href="{{ url('/css/pricing-table.css') }}">
+        <style>
+        .transition {
+        position:absolute;
+        top:0;
+        height:100%;
+        width:1%;
+        background:#563d7c;
+        transform: skewX(0deg) translateX(-50px);
+        transition:2s all ease-in-out;
+        -webkit-transition:2s all ease-in-out;
+        }
+
+.content {
+  position:relative;
+  padding:200px 0 0 200px;
+  color:#000;
+  z-index:10;
+  height:300px;
+}
+
+.anim-trans {
+  animation: anim 4s ease-in-out;
+  }
+
+@keyframes anim{
+     0% { }
+     20%  { z-index:11;\transform: skewX(5deg) translateX(-100%); }
+     40%   { transform: skewX(0deg) translateX(0);
+ width:100%; z-index:11; box-shadow: 10px 10px 5px #eaeaea;}
+     60%   { transform: skewX(3deg) translateX(0);
+ width:100%;z-index:11; box-shadow: 10px 10px 5px #eaeaea;}
+     80%   { transform: skewX(1deg) translateX(-100%);
+ width:60%;z-index:11; box-shadow: 10px 10px 5px #eaeaea;}
+     100%   { transform: skewX(-5deg) translateX(-50px);
+ width:1%;z-index:1; box-shadow: none;}
+}
+        </style>
 </head>
     <body>
         @include('layouts.components.navbar')
-
+        <div class="transition"></div>
         @include('layouts.components.sidebar')
+        
         <main class="page-content">
         <div class="container-fluid">
          <div class="demo">
@@ -34,7 +72,7 @@
                                     <span class="price-amount"> <h4>FREE</h4> <span class="duration">1<sup>st</sup> month</span></span>
                                 </div>
                                 <div class="pricingTable-signup">
-                                    <a href="/pricing/trial/add-vehicle">Sign Up</a>
+                                    <a href="#" class="cta">Sign Up</a>
                                 </div>
                             </div>
                         </div>
@@ -95,6 +133,12 @@
                 $('#navbarSupportedContent ul li').removeClass("active");
                 $("#pricing").addClass('active');
                 $(".page-wrapper").removeClass("toggled");
+                $( ".cta" ).click(function() {
+                    $( ".transition").toggleClass( "anim-trans" );
+                    setTimeout(function(){
+                        window.location.replace("/pricing/trial/add-vehicle");
+                    },700);
+                });
             });
         </script>
     </body>
