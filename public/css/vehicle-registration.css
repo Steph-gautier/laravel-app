@@ -7,7 +7,7 @@
     margin-top: 20px
 }
 
-#msform fieldset .form-card {
+#msform form .form-card {
     background: white;
     border: 0 none;
     border-radius: 0px;
@@ -19,7 +19,7 @@
     position: relative
 }
 
-#msform fieldset {
+#msform form {
     background: white;
     border: 0 none;
     border-radius: 0.5rem;
@@ -30,11 +30,11 @@
     position: relative
 }
 
-#msform fieldset:not(:first-of-type) {
+#msform form:not(:first-of-type) {
     display: none
 }
 
-#msform fieldset .form-card {
+#msform form .form-card {
     text-align: left;
     color: #9E9E9E
 }
@@ -66,7 +66,7 @@
 }
 
 #msform .action-button {
-    width: 100px;
+    width: fit-content;
     background: #563d7c;
     font-weight: bold;
     color: white;
@@ -84,7 +84,7 @@
 }
 
 #msform .action-button-previous {
-    width: 100px;
+    width: fit-content;
     background: #17a2b8;
     font-weight: bold;
     color: white;
@@ -258,3 +258,144 @@ select.list-dt:focus {
     width:260px;
     height:170px;
 }
+
+
+
+.box {
+    display: block;
+    width: 80%;
+    height: 10%;
+    margin: 10px 10px 20px 50px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    overflow: hidden;
+  }
+  
+  .upload-options {
+    position: relative;
+    height: 75px;
+    padding-left:15%;
+    cursor: pointer;
+    overflow: hidden;
+    text-align: center;
+    transition: background-color ease-in-out 150ms;
+  }
+  .upload-options:hover {
+    background-color: #563d7c;
+  }
+  .upload-options input {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+  }
+  .upload-options label {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    font-weight: 400;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    overflow: hidden;
+  }
+  .upload-options label::after {
+    content: 'Select an image view where we can detect the matriculation number';
+    font-family: 'Material Icons';
+    font-size: 14px;
+    position: absolute;
+    color: #f0f0f0;
+    z-index: 0;
+  }
+  .upload-options label span {
+    display: inline-block;
+    width: 50%;
+    height: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    vertical-align: middle;
+    text-align: center;
+  }
+  .upload-options label span:hover i.material-icons {
+    color: lightgray;
+  }
+  
+  .js--image-preview {
+    height: 225px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    background-image: url("");
+    background-color: white;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .js--image-preview::after {
+    font-family: 'Material Icons';
+    position: relative;
+    color: #e6e6e6;
+    z-index: 0;
+  }
+  .js--image-preview.js--no-default::after {
+    display: none;
+  }
+  
+  
+  i.material-icons {
+    transition: color 100ms ease-in-out;
+    font-size: 2.25em;
+    line-height: 55px;
+    color: white;
+    display: block;
+  }
+  
+  .drop {
+    display: block;
+    position: absolute;
+    background: rgba(95, 158, 160, 0.2);
+    border-radius: 100%;
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  
+  .animate {
+    -webkit-animation: ripple 1s linear;
+            animation: ripple 1s linear;
+  }
+  
+  @-webkit-keyframes ripple {
+    100% {
+      opacity: 0;
+      -webkit-transform: scale(2.5);
+              transform: scale(2.5);
+    }
+  }
+  
+  @keyframes ripple {
+    100% {
+      opacity: 0;
+      -webkit-transform: scale(2.5);
+              transform: scale(2.5);
+    }
+  }
+
+  .percent{
+      color:rgb(0, 0, 0);
+      font-weight: 600;
+  }
+  #plan-section{
+      border-radius: 0px;
+      width:30%;
+      font-size: 13px;
+      font-weight: bolder;
+      position: relative;
+      left: -2.5rem;
+      transform: rotate(-40deg);
+  }

@@ -141,7 +141,17 @@
         var drawing_polygon_isClicked = false;
                 $('#draw_polygon').click(function(){
                   drawing_polygon_isClicked = true;
-                    $('.toast').toast('show');
+                  $.toast({
+                      heading:'Notifications <small style="font-size:8px;margin-left:20px">Cameroon GPS<sup><img src="{{ url("img/network.png")}}"style="width:15px"/></sup></small>',
+                      text:'Select the vehicle and start drawing',
+                      showHideTransition : 'fade',  // It can be plain, fade or slide
+                      hideAfter : 5000,
+                      icon:'info',              // `false` to make it sticky or time in miliseconds to hide after
+                      stack : 5,                     // `fakse` to show one stack at a time count showing the number of toasts that can be shown at once
+                      textAlign : 'left',            // Alignment of text i.e. left, right, center
+                      position : 'bottom-center',
+                      loaderBg: '#fff'
+                    });
                     if(drawing_polygon_isClicked == true && typeof(circle) === 'undefined'){
                       google.maps.event.addListener(current_marker, "click", function () {
                           drawPolygon();
